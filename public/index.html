@@ -18,7 +18,67 @@
     
 </head>
 <body>
-    <pre id="object"></pre>
+     <div class="page-wrappe">
+        <form action="" class="myform"> 
+            <h1 class="aligner">Что случилось?</h1>
+            <p class="aligner">
+                <label for=""> Ваша проблема
+                    <select name="problem" id=""
+                        <option value="Bench"></option>
+                    </select>
+                </label>
+            </p>
+            <p class="aligner">Сколько вам полных лет?
+                <label for="">
+                    <input type="number" name="age" id="form-age">
+                </label>
+            </p>
+            <p class="aligner">Ваш рост.
+                <label for="">
+                    <input type="number" name="growth" id="form-growth">
+                </label>
+            </p>
+            <p class="aligner">Ваш вес.
+                <label for="">
+                    <input type="number" name="weight" id="form-weight">
+                </label>
+            </p>
+            <p class="aligner">Вы женщина или мужчина? 
+                <label for="">
+                    <p class="aligner">
+                        <input type="radio" name="gender" id="form-gender" value="male">Мужчина
+                        <input type="radio" name="gender" id="form-gender" value="female">Женщина
+                    </p>
+                </label>
+            </p>
+            <p class="aligner">Давление повышено?
+                <label for="">
+                    <p class="aligner">
+                        <input type="radio" name="pressure" id="form-pressure" value="yes">Да
+                        <input type="radio" name="pressure" id="form-pressure" value="no">Нет
+                        <input type="radio" name="pressure" id="form-pressure" value="possibly">Не знаю
+                    </p>
+                </label>
+            </p>
+            <p class="aligner">Температура тела повышена? 
+                <label for="">
+                    <p class="aligner">
+                        <input type="radio" name="temperature" id="form-temperature" value="male">Да
+                        <input type="radio" name="temperature" id="form-temperature" value="female">Нет
+                        <input type="radio" name="temperature" id="form-temperature" value="possibly">Не знаю
+                    </p>
+                </label>
+            </p>
+            <p class="aligner">
+                <label for="">
+                    <input type="submit" value="ДАЛЬШЕ">
+                </label>
+            </p>
+        </form>
+     </div>
+    <div id="all">
+        
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
