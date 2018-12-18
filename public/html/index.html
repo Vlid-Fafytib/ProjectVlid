@@ -19,7 +19,7 @@
 </head>
 <body>
      <div class="page-wrappe">
-        <form action="" class="myform"> 
+        <form  class="myform" action="../html/list.html"> 
             <h1 class="aligner">Что случилось?</h1>
             <p class="aligner">
                 <label for=""> Ваша проблема
@@ -30,23 +30,23 @@
             </p>
             <p class="aligner">Сколько вам полных лет?
                 <label for="">
-                    <input  type="number" name="age" id="form-age">
+                    <input min="0" max="100" type="number" name="age" id="form-age">
                 </label>
             </p>
             <p class="aligner">Ваш рост.
                 <label for="">
-                    <input type="number" name="growth" id="form-growth">
+                    <input min="45" max="250" type="number" name="growth" id="form-growth">
                 </label>
             </p>
             <p class="aligner">Ваш вес.
                 <label for="">
-                    <input type="number" name="weight" id="form-weight">
+                    <input min="3" max="300" type="number" name="weight" id="form-weight">
                 </label>
             </p>
             <p class="aligner">Вы женщина или мужчина? 
                 <label for="">
                     <p class="aligner">
-                        <input type="radio" name="gender" id="form-male" value="male">Мужчина
+                        <input type="radio" name="gender" id="form-male" value="male" checked>Мужчина
                         <input type="radio" name="gender" id="form-female" value="female">Женщина
                     </p>
                 </label>
@@ -55,7 +55,7 @@
                 <label for="">
                     <p class="aligner">
                         <input type="radio" name="pressure" id="form-pressure-yes" value="yes">Да
-                        <input type="radio" name="pressure" id="form-pressure-no" value="no">Нет
+                        <input type="radio" name="pressure" id="form-pressure-no" value="no" checked>Нет
                         <input type="radio" name="pressure" id="form-pressure-possibly" value="possibly">Не знаю
                     </p>
                 </label>
@@ -64,15 +64,14 @@
                 <label for="">
                     <p class="aligner">
                         <input type="radio" name="temperature" id="form-temperature-yes" value="yes">Да
-                        <input type="radio" name="temperature" id="form-temperature-no" value="no">Нет
+                        <input type="radio" name="temperature" id="form-temperature-no" value="no" checked>Нет
                         <input type="radio" name="temperature" id="form-temperature-possibly" value="possibly">Не знаю
                     </p>
                 </label>
             </p>
             <p class="aligner">
-                <label for="">
-                   
-                        <input type="button" value="ДАЛЬШЕ" onclick="goo()">
+                <label for="">    
+                    <input id="btn-submit" type="submit" value="ДАЛЬШЕ">
                     
                 </label>
             </p>
