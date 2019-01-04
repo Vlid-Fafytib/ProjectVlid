@@ -5,7 +5,7 @@ let listRef = db.ref().child('all');
 var array = [];
 var tag = [];
 var newItem = "";
-var quan;
+var quan = 0;
 const page1 = {
     post1: document.getElementById("probleme"),
     post2: document.getElementById("location"),
@@ -28,13 +28,14 @@ createOptions: function(item){
     }
 }
 };
-setInterval(function () {
+var intervalB = setInterval(function () { // вызов добавления интервалом, данный интервал нужно остановить!!!!
+   
     listRef = db.ref('all/articles/'); //это изменение пути для комментов, в зависимости от выбранного варианта
     listRef.on('child_added', function (data) {             //функция которая вызовет другую функцию с данными получеными из бд
     tag.length = 0;
     
     tag.push(data.val().tags.split(","));
-        addItem(data, tag, newItem);                                      //вызов функции addItem
+        addItem(data, tag);                                      //вызов функции addItem
     });
 
 }, 1000);
@@ -43,43 +44,46 @@ page1.ref.on('value', function(snap) {  //функция создания спи
     this.list = snap.val();               //массив из строки 6 заполняется даннми из базы
     page1.createOptions(this.list);     //вызов функции для вывода вариантов списка из строки 12
 });
-function addItem(item, tag, newItem) {//добавление элемента в отображение
+function addItem(item, tag) {//добавление элемента в отображение
     //cоздадим новый элемент списка с данными из аргумента (каждый item состоит из ключа и значения)
     //по сути это просто добавление комеентария в список комментариев
     // if (bench.style.diplay == "none") {
         
     // console.log(tag);
-    newItem = "";
-    if (tag[0][0] == array[6] || tag[0][1] == array[7] || tag[0][2] == array[8]) {
-        if (tag[0][0] == array[6]){
-            newItem += '<div class="comm_block"><h2 class="user_name">'
-            +item.val().title+'</h2><p class="commText">'
-            +item.val().text+'</div>';
-            quan = 1;
-        }
-        if (tag[0][1] == array[7] && quan != 1){
-            newItem += '<div class="comm_block"><h2 class="user_name">'
-            +item.val().title+'</h2><p class="commText">'
-            +item.val().text+'</div>';
-            quan = 1;
-        }
-        if (tag[0][2] == array[8] && quan != 1){
-            newItem += '<div class="comm_block"><h2 class="user_name">'
-            +item.val().title+'</h2><p class="commText">'
-            +item.val().text+'</div>';
-        }
-        
+    
+    if (tag[0][0] == array[6]){
+        newItem += '<div class="comm_block"><h2 class="user_name">'
+        +item.val().title+'</h2><p class="commText">'
+        +item.val().text+'</div>';
+        quan = 1;
+    }
+    if (tag[0][1] == array[7]){
+        newItem += '<div class="comm_block"><h2 class="user_name">'
+        +item.val().title+'</h2><p class="commText">'
+        +item.val().text+'</div>';
+        quan = 1;
+    }
+    if (tag[0][2] == array[8]){
+        newItem += '<div class="comm_block"><h2 class="user_name">'
+        +item.val().title+'</h2><p class="commText">'
+        +item.val().text+'</div>';
+    }
+    quan++;
+    if (quan != tag.length) {
         document.querySelector('.com_field').innerHTML = "";  //добавление элемента списка в список
         document.querySelector('.com_field').innerHTML += newItem;  //добавление элемента списка в список
-
-        quan = 0;
     }
+    
+    // clearInterval(intervalB);
+    
+    
 }
 // }
 page1.post1.onchange = function () {
     array[6] = document.getElementById("probleme").value;
     array[7] = document.getElementById("location").value;
     array[8] = document.getElementById("ache").value;
+    console.log(array[6]);
 }
 page1.post2.onchange = function () {
     array[6] = document.getElementById("probleme").value;
