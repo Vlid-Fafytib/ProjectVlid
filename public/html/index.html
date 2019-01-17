@@ -17,13 +17,23 @@
     </script>
     
 </head>
-<body>
+<body onload="loadfunc()">
      <div class="page-wrappe">
-        <form  class="myform" action="../html/list.html"> 
+        <form  id="myform" action=""> 
             <h1 class="aligner">Что случилось?</h1>
             <p class="aligner">
-                <label for=""> Ваша проблема
+                <label for=""> Что произошло?
                     <select name="problem" id="probleme"
+                        <option value="Bench"></option>
+                    </select>
+                </label>
+                <label for=""> Где произошло?
+                    <select name="problem" id="location"
+                        <option value="Bench"></option>
+                    </select>
+                </label>
+                <label for=""> Что болит?
+                    <select name="problem" id="ache"
                         <option value="Bench"></option>
                     </select>
                 </label>
@@ -40,7 +50,7 @@
             </p>
             <p class="aligner">Ваш вес.
                 <label for="">
-                    <input min="3" max="300" type="number" name="weight" id="form-weight">
+                    <input min="3" max="300" type="number" name="weight" id="form-weight"> 
                 </label>
             </p>
             <p class="aligner">Вы женщина или мужчина? 
@@ -71,15 +81,14 @@
             </p>
             <p class="aligner">
                 <label for="">    
-                    <input id="btn-submit" type="submit" value="ДАЛЬШЕ">
+                    <input onclick="return false;" id="btn-submit" type="submit" value="ДАЛЬШЕ">
                     
                 </label>
             </p>
         </form>
+        
      </div>
-    <div id="all">
-        <div class="com_field"></div>
-    </div>
+     <div class="com_field"></div>
     <script src="../js/script.js"></script>
 </body>
 </html>
