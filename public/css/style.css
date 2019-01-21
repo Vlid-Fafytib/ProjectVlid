@@ -72,3 +72,7 @@ body{
     height: 45vh;   
     margin: 0 auto;
 }
+
+#side-bar{
+    display: none;
+}

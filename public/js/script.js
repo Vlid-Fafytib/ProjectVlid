@@ -4,13 +4,18 @@ const db = firebase.database();
 let listRef = db.ref().child('all');
 var array = [];
 var tag = [];
+var global_tags = [];
 var newItem = "";
+var sidebar = document.getElementById("side-bar");
 var bench = document.getElementById("myform");
 
 const page1 = {
     post1: document.getElementById("probleme"),
     post2: document.getElementById("location"),
     post3: document.getElementById("ache"),
+    form1: document.getElementById("form-1"),
+    form2: document.getElementById("form-2"),
+    form3: document.getElementById("form-3"),
     ref: db.ref('all/articles'),
     tags: [],
     list: [],
@@ -20,12 +25,19 @@ createOptions: function(item){
     this.post1.innerHTML = "";
     this.post2.innerHTML = "";
     this.post3.innerHTML = "";
+    this.form1.innerHTML = "";
+    this.form2.innerHTML = "";
+    this.form3.innerHTML = "";
     for (let i in item){
         // this.tags.push(item.val().tags.split(","));
         this.tags[i] = item[i].tags.split(',');
+        global_tags[i] = this.tags[i];
         this.post1.innerHTML+= `<option value="${this.tags[i][0]}">${this.tags[i][0]}</option>`;
         this.post2.innerHTML+= `<option value="${this.tags[i][1]}">${this.tags[i][1]}</option>`;
         this.post3.innerHTML+= `<option value="${this.tags[i][2]}">${this.tags[i][2]}</option>`;
+        this.form1.innerHTML+= `<p class="aligner"><label><input type="checkbox" name="tags-form1" id="${i}">${this.tags[i][0]}</label></p>`;
+        this.form2.innerHTML+= `<p class="aligner"><label><input type="checkbox" name="tags-form2" id="${i}">${this.tags[i][1]}</label></p>`;
+        this.form3.innerHTML+= `<p class="aligner"><label><input type="checkbox" name="tags-form3" id="${i}">${this.tags[i][2]}</label></p>`;
     }
 }
 };
@@ -86,7 +98,6 @@ function loadfunc(){
     array[7] = document.getElementById("location").value;
     array[8] = document.getElementById("ache").value;
     call1();
-    alert(array[6]);
 }
 // }
 page1.post1.onchange = function () {
@@ -143,6 +154,7 @@ if (array[9]) {
         array[5] = document.getElementById("form-temperature-possibly").value;
     };
     bench.style.display='none';//visibility = "collapse";
+    sidebar.style.display = "block";
     call1();
   // Пройдёмся по всем полям
 
