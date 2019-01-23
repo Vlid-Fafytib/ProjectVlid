@@ -6,9 +6,9 @@ var array = [];
 var tag = [];
 var global_tags = [];
 var newItem = "";
+var checkboxesChecked = [];
 var sidebar = document.getElementById("side-bar");
 var bench = document.getElementById("myform");
-
 const page1 = {
     post1: document.getElementById("probleme"),
     post2: document.getElementById("location"),
@@ -19,8 +19,6 @@ const page1 = {
     ref: db.ref('all/articles'),
     tags: [],
     list: [],
-    show: function(item) {
-    },
 createOptions: function(item){
     this.post1.innerHTML = "";
     this.post2.innerHTML = "";
@@ -31,40 +29,39 @@ createOptions: function(item){
     for (let i in item){
         // this.tags.push(item.val().tags.split(","));
         this.tags[i] = item[i].tags.split(',');
-        global_tags[i] = this.tags[i];
         this.post1.innerHTML+= `<option value="${this.tags[i][0]}">${this.tags[i][0]}</option>`;
         this.post2.innerHTML+= `<option value="${this.tags[i][1]}">${this.tags[i][1]}</option>`;
         this.post3.innerHTML+= `<option value="${this.tags[i][2]}">${this.tags[i][2]}</option>`;
-        this.form1.innerHTML+= `<p class="aligner"><label><input type="checkbox" name="tags-form1" id="${i}">${this.tags[i][0]}</label></p>`;
-        this.form2.innerHTML+= `<p class="aligner"><label><input type="checkbox" name="tags-form2" id="${i}">${this.tags[i][1]}</label></p>`;
-        this.form3.innerHTML+= `<p class="aligner"><label><input type="checkbox" name="tags-form3" id="${i}">${this.tags[i][2]}</label></p>`;
+        this.form1.innerHTML+= `<p class="aligner"><label><input type="checkbox" value="${this.tags[i][0]}" name="tags-form1" class="checkbox">${this.tags[i][0]}</label></p>`;
+        this.form2.innerHTML+= `<p class="aligner"><label><input type="checkbox" value="${this.tags[i][0]}" name="tags-form2" class="checkbox">${this.tags[i][1]}</label></p>`;
+        this.form3.innerHTML+= `<p class="aligner"><label><input type="checkbox" value="${this.tags[i][0]}" name="tags-form3" class="checkbox">${this.tags[i][2]}</label></p>`;
     }
 }
 };
 // var intervalB = setInterval(function () { // вызов добавления интервалом, данный интервал нужно остановить!!!!
-function call1() {
+function call1(temp) {
     newItem = "";
     listRef = db.ref('all/articles/'); //это изменение пути для комментов, в зависимости от выбранного варианта
     listRef.on('child_added', function (data) {             //функция которая вызовет другую функцию с данными получеными из бд
     tag.length = 0;
     
     tag.push(data.val().tags.split(","));
-        addItem(data, tag);                                      //вызов функции addItem
+    if (temp == 1) {
+        addItem(data, tag);   
+    } else {
+        addItem2(data, tag);
+    }
+                                           //вызов функции addItem
     });
 }
 // }, 1000);
+
 
 page1.ref.on('value', function(snap) {  //функция создания списка с комментами
     this.list = snap.val();               //массив из строки 6 заполняется даннми из базы
     page1.createOptions(this.list);     //вызов функции для вывода вариантов списка из строки 12
 });
-function addItem(item, tag) {//добавление элемента в отображение
-    //cоздадим новый элемент списка с данными из аргумента (каждый item состоит из ключа и значения)
-    //по сути это просто добавление комеентария в список комментариев
-    // if (bench.style.diplay == "none") {
-        
-    // console.log(tag);
-    
+function addItem(item, tag) {
     if (tag[0][0] == array[6]){
         newItem += '<div class="comm_block"><h2 class="user_name">'
         +item.val().title+'</h2><p class="commText">'
@@ -83,40 +80,78 @@ function addItem(item, tag) {//добавление элемента в отоб
     if (bench.style.display == "none"){
         document.querySelector('.com_field').innerHTML = "";  //добавление элемента списка в список
         document.querySelector('.com_field').innerHTML += newItem;
-
     }
+}
 
+function addItem2 (item, tag){
+    for (let i = 0; i < array.length; i++) {
+        if (tag[0][0] == checkboxesChecked[i]){
+            newItem += '<div class="comm_block"><h2 class="user_name">'
+            +item.val().title+'</h2><p class="commText">'
+            +item.val().text+'</div>';
+        } else
+        if (tag[0][1] == checkboxesChecked[i]){
+            newItem += '<div class="comm_block"><h2 class="user_name">'
+            +item.val().title+'</h2><p class="commText">'
+            +item.val().text+'</div>';
+        } else
+        if (tag[0][2] == checkboxesChecked[i]){
+            newItem += '<div class="comm_block"><h2 class="user_name">'
+            +item.val().title+'</h2><p class="commText">'
+            +item.val().text+'</div>';
+        }
+        if (bench.style.display == "none"){
+            document.querySelector('.com_field').innerHTML = "";  //добавление элемента списка в список
+            document.querySelector('.com_field').innerHTML += newItem;
+        }
+    }
+}
 
-        
-    
-          //добавление элемента списка в список
-    
-    // clearInterval(intervalB);
+function getCheckedCheckBoxes() {
+    checkboxesChecked.length = 0;
+    var checkboxes = document.getElementsByClassName('checkbox');
+    for (var index = 0; index < checkboxes.length; index++) {
+       if (checkboxes[index].checked) {
+        checkboxesChecked.push(checkboxes[index].value); // положим в массив выбранный
+       }
+    }
+  }
+page1.form1.onchange = function (){
+    getCheckedCheckBoxes();
+    call1(0);
+}
+page1.form2.onchange = function (){
+    getCheckedCheckBoxes();
+    call1(0);
+}
+page1.form3.onchange = function (){
+    getCheckedCheckBoxes();
+    call1(0);
 }
 function loadfunc(){
     array[6] = document.getElementById("probleme").value;
     array[7] = document.getElementById("location").value;
     array[8] = document.getElementById("ache").value;
-    call1();
+    call1(1);
 }
 // }
 page1.post1.onchange = function () {
     array[6] = document.getElementById("probleme").value;
     array[7] = document.getElementById("location").value;
     array[8] = document.getElementById("ache").value;
-    call1();
+    call1(1);
 }
 page1.post2.onchange = function () {
     array[6] = document.getElementById("probleme").value;
     array[7] = document.getElementById("location").value;
     array[8] = document.getElementById("ache").value;
-    call1();
+    call1(1);
 }
 page1.post3.onchange = function () {
     array[6] = document.getElementById("probleme").value;
     array[7] = document.getElementById("location").value;
     array[8] = document.getElementById("ache").value;
-    call1();
+    call1(1);
 }
 
 array[9] = document.getElementById("btn-submit");
