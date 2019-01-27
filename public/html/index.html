@@ -17,8 +17,11 @@
     </script>
     
 </head>
-<body onload="loadfunc()">
-     <div class="page-wrappe">
+<body>
+    <header>
+        <h1>Расскажите о себе</h1>
+    </header>
+     <div class="page-wrapper">
         <form  id="myform" action=""> 
             <h1 class="aligner">Что случилось?</h1>
             <p class="aligner">
@@ -53,48 +56,55 @@
                     <input min="3" max="300" type="number" name="weight" id="form-weight"> 
                 </label>
             </p>
-            <p class="aligner">Вы женщина или мужчина? 
-                <label for="">
-                    <p class="aligner">
-                        <input type="radio" name="gender" id="form-male" value="male" checked>Мужчина
-                        <input type="radio" name="gender" id="form-female" value="female">Женщина
-                    </p>
-                </label>
+            <p class="">
+                    <label class="radio">
+                            <input type="radio"  id="form-male" name="gender" value="male" checked>
+                            <span>Мужчина</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" id="form-female" name="gender" value="female">
+                            <span>Женщина</span>
+                        </label>
             </p>
-            <p class="aligner">Давление повышено?
-                <label for="">
-                    <p class="aligner">
-                        <input type="radio" name="pressure" id="form-pressure-yes" value="yes">Да
-                        <input type="radio" name="pressure" id="form-pressure-no" value="no" checked>Нет
-                        <input type="radio" name="pressure" id="form-pressure-possibly" value="possibly">Не знаю
-                    </p>
-                </label>
+            <p class="">Давление повышено?
+                <label class="radio">
+                        <input type="radio" name="pressure" value="yes" id="form-pressure-yes" checked>
+                        <span>Да</span>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="pressure" id="form-pressure-no" value="no">
+                        <span>Нет</span>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="pressure" id="form-pressure-possibly" value="possibly">
+                        <span>Не знаю</span>
+                    </label>
             </p>
-            <p class="aligner">Температура тела повышена? 
-                <label for="">
-                    <p class="aligner">
-                        <input type="radio" name="temperature" id="form-temperature-yes" value="yes">Да
-                        <input type="radio" name="temperature" id="form-temperature-no" value="no" checked>Нет
-                        <input type="radio" name="temperature" id="form-temperature-possibly" value="possibly">Не знаю
-                    </p>
-                </label>
+            <p class="">Температура тела повышена? 
+                <label class="radio">
+                        <input type="radio" name="temperature" value="yes" id="form-temperature-yes" checked>
+                        <span>Да</span>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="temperature" id="form-temperature-no" value="no">
+                        <span>Нет</span>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="temperature" id="form-temperature-possibly" value="possibly">
+                        <span>Не знаю</span>
+                    </label>
             </p>
             <p class="aligner">
-                <label for="">    
-                    <input onclick="return false;" id="btn-submit" type="submit" value="ДАЛЬШЕ">
-
-                    
-                </label>
+                <div class="wrap"><button onclick="return false;" id="btn-submit"><span>Дальше</span></button></div>
+                    <!-- <input onclick="return false;" id="btn-submit" type="submit" value="ДАЛЬШЕ"> -->
             </p>
         </form>
-        
-     </div>
-     <div id="side-bar">
+         <div id="side-bar">
         <p class="aligner">
             <h3>Что случилось?</h3>
         </p>
         <form action="" id="form-1">
-            
+
         </form>
         <hr>
         <p class="aligner">
@@ -112,6 +122,8 @@
         </form>
      </div>
      <div class="com_field"></div>
+     </div>
+    
     <script src="../js/script.js"></script>
 </body>
 </html>
