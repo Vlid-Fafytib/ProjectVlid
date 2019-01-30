@@ -7,16 +7,17 @@ body{
     margin-top: 0px;
     background-color: #e3f2fd ;
     width: 100%; 
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-size: 20px;
 }
 
-/* .aligner{
+.aligner{
     margin-top: 0px;
     text-align: center;
     width: 50%;
     text-align: center;
     margin: 0 auto 30px auto;
-} */
+}
 
 #side-bar{
     display: none;
@@ -25,13 +26,13 @@ body{
 
 header{
     width: 100%;
-    height: 30px;
+    height: 50px;
     margin: 0;
     padding: 0;
     background-color: #2979ff;
 }
 header > h1{
-    font-size: 20pt;
+    font-size: 30pt;
     color: #fff;
     text-align: center;
     margin: 0;
@@ -122,7 +123,7 @@ button span {
 	position: relative;
 	z-index: 1;
 	display: block;
-	min-width: 1em;
+	min-width: 120px;
 	padding: 1em;
 	border-radius: 2em;
 	background-color:  #5D9BFB;
@@ -160,12 +161,30 @@ button:active::after {
 .wrap {
 	width: 100%;
 	text-align: center;
-	position: absolute;
-	top: 50%;
+	position: relative;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	margin-top: 80px;
 }
 
 .wrap button {
 	margin: 1em;
+}
+
+.border{
+	padding: 30px 0;
+	border: 2px dotted grey;
+	border-radius: 2%;
+	width: 25%;
+	margin: 0 auto;
+	margin-bottom: 30px;
+}
+
+.last{
+	margin-bottom: 0;
+}
+
+.title-wrapp{
+	padding-top: 25px;
+	color: #444;
 }

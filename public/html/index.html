@@ -1,73 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Project</title>
-    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
     <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase-database.js"></script>   
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase-database.js"></script>
     <script> // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyAnJvlFlRek-KgQlsvAq1dkJgxT-pPY0hQ",
-        databaseURL: "https://projectvlid.firebaseio.com/",
-    };
-    firebase.initializeApp(config); 
+        var config = {
+            apiKey: "AIzaSyAnJvlFlRek-KgQlsvAq1dkJgxT-pPY0hQ",
+            databaseURL: "https://projectvlid.firebaseio.com/",
+        };
+        firebase.initializeApp(config); 
     </script>
-    
+
 </head>
+
 <body>
     <header>
         <h1>Расскажите о себе</h1>
     </header>
-     <div class="page-wrapper">
-        <form  id="myform" action=""> 
-            <h1 class="aligner">Что случилось?</h1>
-            <p class="aligner">
-                <label for=""> Что произошло?
-                    <select name="problem" id="probleme"
-                        <option value="Bench"></option>
-                    </select>
-                </label>
-                <label for=""> Где произошло?
-                    <select name="problem" id="location"
-                        <option value="Bench"></option>
-                    </select>
-                </label>
-                <label for=""> Что болит?
-                    <select name="problem" id="ache"
-                        <option value="Bench"></option>
-                    </select>
-                </label>
-            </p>
-            <p class="aligner">Сколько вам полных лет?
-                <label for="">
-                    <input min="0" max="100" type="number" name="age" id="form-age">
-                </label>
-            </p>
-            <p class="aligner">Ваш рост.
-                <label for="">
-                    <input min="45" max="250" type="number" name="growth" id="form-growth">
-                </label>
-            </p>
-            <p class="aligner">Ваш вес.
-                <label for="">
-                    <input min="3" max="300" type="number" name="weight" id="form-weight"> 
-                </label>
-            </p>
-            <p class="">
+    <div class="page-wrapper">
+        <form id="myform" action="">
+            <h1 class="aligner title-wrapp">Что случилось?</h1>
+            <div class="border">
+                <p class="aligner">
+                    <label for=""> Что произошло?
+                        <select name="problem" id="probleme" <option value="Bench"></option>
+                        </select>
+                    </label>
+                </p>
+                <p class="aligner">
+                    <label for=""> Где произошло?
+                        <select name="problem" id="location" <option value="Bench"></option>
+                        </select>
+                    </label>
+                </p>
+                <p class="aligner last">
+                    <label for=""> Что болит?
+                        <select name="problem" id="ache" <option value="Bench"></option>
+                        </select>
+                    </label>
+                </p>
+            </div>
+            <div class="border">
+                <p class="aligner">Сколько вам полных лет?
+                    <label for="">
+                        <input min="0" max="100" type="number" name="age" id="form-age">
+                    </label>
+                </p>
+                <p class="aligner">Ваш рост.
+                    <label for="">
+                        <input min="45" max="250" type="number" name="growth" id="form-growth">
+                    </label>
+                </p>
+                <p class="aligner">Ваш вес.
+                    <label for="">
+                        <input min="3" max="300" type="number" name="weight" id="form-weight">
+                    </label>
+                </p>
+            </div>
+            <div class="border">
+                <p class="aligner">
+                    Ваш пол?
                     <label class="radio">
-                            <input type="radio"  id="form-male" name="gender" value="male" checked>
-                            <span>Мужчина</span>
-                        </label>
-                        <label class="radio">
-                            <input type="radio" id="form-female" name="gender" value="female">
-                            <span>Женщина</span>
-                        </label>
-            </p>
-            <p class="">Давление повышено?
-                <label class="radio">
+                        <input type="radio" id="form-male" name="gender" value="male" checked>
+                        <span>Мужчина</span>
+                    </label></p>
+                <p class="aligner">
+                    <label class="radio">
+                        <input type="radio" id="form-female" name="gender" value="female">
+                        <span>Женщина</span>
+                    </label>
+                </p>
+            </div>
+            <div class="border">
+                <p class="aligner">Давление повышено?
+                    <label class="radio">
                         <input type="radio" name="pressure" value="yes" id="form-pressure-yes" checked>
                         <span>Да</span>
                     </label>
@@ -79,9 +91,11 @@
                         <input type="radio" name="pressure" id="form-pressure-possibly" value="possibly">
                         <span>Не знаю</span>
                     </label>
-            </p>
-            <p class="">Температура тела повышена? 
-                <label class="radio">
+                </p>
+            </div>
+            <div class="border">
+                <p class="aligner">Температура тела повышена?
+                    <label class="radio">
                         <input type="radio" name="temperature" value="yes" id="form-temperature-yes" checked>
                         <span>Да</span>
                     </label>
@@ -93,37 +107,39 @@
                         <input type="radio" name="temperature" id="form-temperature-possibly" value="possibly">
                         <span>Не знаю</span>
                     </label>
-            </p>
+                </p>
+            </div>
             <p class="aligner">
                 <div class="wrap"><button onclick="return false;" id="btn-submit"><span>Дальше</span></button></div>
-                    <!-- <input onclick="return false;" id="btn-submit" type="submit" value="ДАЛЬШЕ"> -->
+                <!-- <input onclick="return false;" id="btn-submit" type="submit" value="ДАЛЬШЕ"> -->
             </p>
         </form>
-         <div id="side-bar">
-        <p class="aligner">
-            <h3>Что случилось?</h3>
-        </p>
-        <form action="" id="form-1">
+        <div id="side-bar">
+            <p class="aligner">
+                <h3>Что случилось?</h3>
+            </p>
+            <form action="" id="form-1">
 
-        </form>
-        <hr>
-        <p class="aligner">
-            <h3>Где произошла ситуация?</h3>
-        </p>
-        <form action="" id="form-2">
-                
-        </form>
-        <hr>
-        <p class="aligner">
-            <h3>Что болит?</h3>
-        </p>
-        <form action="" id="form-3">
-                
-        </form>
-     </div>
-     <div class="com_field"></div>
-     </div>
-    
+            </form>
+            <hr>
+            <p class="aligner">
+                <h3>Где произошла ситуация?</h3>
+            </p>
+            <form action="" id="form-2">
+
+            </form>
+            <hr>
+            <p class="aligner">
+                <h3>Что болит?</h3>
+            </p>
+            <form action="" id="form-3">
+
+            </form>
+        </div>
+        <div class="com_field"></div>
+    </div>
+
     <script src="../js/script.js"></script>
 </body>
+
 </html>
