@@ -1,5 +1,5 @@
 body{
-    margin: auto;
+    margin: 0 auto;
     padding: 0;
 }
 
@@ -9,6 +9,7 @@ body{
     width: 100%; 
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	font-size: 20px;
+	overflow: hidden;
 }
 
 .aligner{
@@ -20,9 +21,13 @@ body{
 }
 
 #side-bar{
-    display: none;
+	display: none;
+	width: 19%;
+	float: left;
+	overflow: hidden;
+	border-right: 2px dotted grey;
+	border-bottom: 2px dotted grey;
 }
-
 
 header{
     width: 100%;
@@ -37,7 +42,6 @@ header > h1{
     text-align: center;
     margin: 0;
 }
-
 
 .radio {
 	margin: 16px 0;
@@ -187,4 +191,10 @@ button:active::after {
 .title-wrapp{
 	padding-top: 25px;
 	color: #444;
+}
+
+.com_field{
+	width: 80%;
+	text-align: center;
+	float: right;
 }
