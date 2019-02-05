@@ -198,3 +198,79 @@ button:active::after {
 	text-align: center;
 	float: right;
 }
+
+.heading-primary {
+  font-size: 2em;
+  padding: 2em;
+  text-align: center;
+}
+
+.accordion dd,
+.accordion__panel {
+  background-color: #eee;
+  font-size: 1em;
+  line-height: 1.5em;
+}
+
+.accordion p {
+  padding: 1em 2em 1em 2em;
+}
+
+.accordion {
+  position: relative;
+  background-color: #eee;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2em 0 2em 0;
+}
+
+.accordionTitle,
+.accordion__Heading {
+  background-color: #38cc70;
+  text-align: center;
+  font-weight: 700;
+  padding: 2em;
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  transition: background-color 0.3s ease-in-out;
+  border-bottom: 1px solid #30bb64;
+}
+
+.accordionTitle:hover,
+.accordion__Heading:hover {
+  background-color: #2ba659;
+}
+
+.accordionTitleActive,
+.accordionTitle.is-expanded {
+  background-color: #2ba659;
+}
+
+.accordionItem {
+  height: auto;
+  overflow: hidden;
+  max-height: 50em;
+  transition: max-height 1s;
+}
+
+.accordionItem.is-collapsed {
+  max-height: 0;
+}
+
+.no-js .accordionItem.is-collapsed {
+  max-height: auto;
+}
+
+.animateIn {
+  animation: accordionIn 0.45s normal ease-in-out both 1;
+}
+
+.animateOut {
+  animation: accordionOut 0.45s alternate ease-in-out both 1;
+}
+
+/*  ЖОПА */
