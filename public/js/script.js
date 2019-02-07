@@ -103,20 +103,19 @@ page1.ref.on('value', function (snap) {  //функция создания сп�
     page1.createOptions(this.list);     //вызов функции для вывода вариантов списка из строки 12
 });
 function addItem(item, tag) {
-    newItem += '<div class="container"><div class="accordion"><dl>';
     if (tag[0][0] == array[6]) {
-        newItem += '<dt><a href="#'+item.val().title+'" class="accordion-title accordionTitle js-accordionTrigger">'+ item.val().title +'</a></dt>'
-            + item.val().text;
+        newItem += '<dt><a href="#'+item.val().id+'" 1onclick="tougler()" class="accordion-title accordionTitle js-accordionTrigger">'+ item.val().title +'</a></dt>'
+            +'<dd id="'+item.val().id+'" class="accordion-content accordionItem is-collapsed">'+item.val().text +'</dd>';
     } else
         if (tag[0][1] == array[7]) {
-            newItem += '<dt><a href="#'+item.val().title+'" class="accordion-title accordionTitle js-accordionTrigger">'+ item.val().title +'</a></dt>'
-            + item.val().text;
+            newItem += '<dt><a "href="#'+item.val().id+'" 1onclick="tougler()" class="accordion-title accordionTitle js-accordionTrigger">'+ item.val().title +'</a></dt>'
+            +'<dd id="'+item.val().id+'" class="accordion-content accordionItem is-collapsed">'+item.val().text +'</dd>';
         } else
             if (tag[0][2] == array[8]) {
-                newItem += '<dt><a href="#'+item.val().title+'" class="accordion-title accordionTitle js-accordionTrigger">'+ item.val().title +'</a></dt>'
-            + item.val().text;
+                newItem += '<dt><a " href="#'+item.val().id+'" 1onclick="tougler()" class="accordion-title accordionTitle js-accordionTrigger">'+ item.val().title +'</a></dt>'
+            +'<dd id="'+item.val().id+'" class="accordion-content accordionItem is-collapsed">'+item.val().text +'</dd>';
+           
             }
-    newItem += '</dl></div></div>';
     if (bench.style.display == "none") {
         document.querySelector('.com_field').innerHTML = "";  //добавление элемента списка в список
         document.querySelector('.com_field').innerHTML += newItem;

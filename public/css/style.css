@@ -5,7 +5,7 @@ body{
 
 .page-wrapper{
     margin-top: 0px;
-    background-color: #e3f2fd ;
+    background-color: #fff ;
     width: 100%; 
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	font-size: 20px;
@@ -34,7 +34,7 @@ header{
     height: 50px;
     margin: 0;
     padding: 0;
-    background-color: #2979ff;
+    background-color: #38cc70;
 }
 header > h1{
     font-size: 30pt;
@@ -89,7 +89,7 @@ header > h1{
 
 .radio input:checked + span:before {
 	transform: scale(1.04);
-	background: #5D9BFB;
+	background: #38cc70;
 }
 
 .radio input:checked + span:after {
@@ -130,8 +130,8 @@ button span {
 	min-width: 120px;
 	padding: 1em;
 	border-radius: 2em;
-	background-color:  #5D9BFB;
-	border: 1px solid  #5D9BFB;
+	background-color:  #38cc70;
+	border: 1px solid  #38cc70;
 	box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.2);
 	transition: transform .1s, box-shadow .2s, background-color .2s;
 }
@@ -149,11 +149,11 @@ button::after {
 }
 
 button:hover span, button:focus span {
-	background-color:  #5D9BFB;
+	background-color:  #38cc70;
 }
 
 button:active span {
-	background-color:  #5D9BFB;
+	background-color:  #38cc70;
 	transform: scale(0.97);
 	box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
 }
@@ -213,7 +213,7 @@ button:active::after {
 }
 
 .accordion p {
-  padding: 1em 2em 1em 2em;
+  padding: 0.2em 2em 0.2em 2em;
 }
 
 .accordion {
@@ -253,7 +253,7 @@ button:active::after {
 .accordionItem {
   height: auto;
   overflow: hidden;
-  max-height: 50em;
+  max-height: 70em;
   transition: max-height 1s;
 }
 
@@ -266,11 +266,11 @@ button:active::after {
 }
 
 .animateIn {
-  animation: accordionIn 0.45s normal ease-in-out both 1;
+  animation: accordionIn 0.45s normal linear both 1;
 }
 
 .animateOut {
-  animation: accordionOut 0.45s alternate ease-in-out both 1;
+  animation: accordionOut 0.45s alternate linear both 1;
 }
 
 /*  ЖОПА */
