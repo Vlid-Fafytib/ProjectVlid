@@ -12,11 +12,19 @@ body{
 	overflow: hidden;
 }
 
+.aligner2{
+	margin-top: 0px;
+    /* text-align: center; */
+    width: 50%;
+
+	margin: 0 30px 30px 0;
+	margin-left: 25px;
+}
+
 .aligner{
     margin-top: 0px;
     text-align: center;
     width: 50%;
-    text-align: center;
     margin: 0 auto 30px auto;
 }
 
@@ -243,6 +251,7 @@ button:active::after {
 .accordionTitle:hover,
 .accordion__Heading:hover {
   background-color: #2ba659;
+  cursor: pointer;
 }
 
 .accordionTitleActive,
@@ -253,7 +262,7 @@ button:active::after {
 .accordionItem {
   height: auto;
   overflow: hidden;
-  max-height: 70em;
+  max-height: 150em;
   transition: max-height 1s;
 }
 

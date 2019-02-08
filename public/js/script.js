@@ -43,15 +43,15 @@ const page1 = {
         }
         this.what.forEach(item=>{
             this.post1.innerHTML += `<option value="${item}">${item}</option>`;
-            this.form1.innerHTML += `<p class="aligner"><label><input type="checkbox" value="${item}" name="tags-form1" class="checkbox">${item}</label></p>`;
+            this.form1.innerHTML += `<p class="aligner2"><label><input type="checkbox" value="${item}" name="tags-form1" class="checkbox">${item}</label></p>`;
         } )
         this.where.forEach(item=>{
             this.post2.innerHTML += `<option value="${item}">${item}</option>`;
-            this.form2.innerHTML += `<p class="aligner"><label><input type="checkbox" value="${item}" name="tags-form2" class="checkbox">${item}</label></p>`;
+            this.form2.innerHTML += `<p class="aligner2"><label><input type="checkbox" value="${item}" name="tags-form2" class="checkbox">${item}</label></p>`;
         } )
         this.part.forEach(item=>{
             this.post3.innerHTML += `<option value="${item}">${item}</option>`;
-            this.form3.innerHTML += `<p class="aligner"><label><input type="checkbox" value="${item}" name="tags-form3" class="checkbox">${item}</label></p>`;
+            this.form3.innerHTML += `<p class="aligner2"><label><input type="checkbox" value="${item}" name="tags-form3" class="checkbox">${item}</label></p>`;
         } )
 
            // this.tags[i] = item[i].tags.split(',');
@@ -104,15 +104,15 @@ page1.ref.on('value', function (snap) {  //функция создания сп�
 });
 function addItem(item, tag) {
     if (tag[0][0] == array[6]) {
-        newItem += '<dt><a href="#'+item.val().id+'" 1onclick="tougler()" class="accordion-title accordionTitle js-accordionTrigger">'+ item.val().title +'</a></dt>'
+        newItem += '<dt><a href="#'+item.val().id+'" class="accordion-title accordionTitle js-accordionTrigger">'+ item.val().title +'</a></dt>'
             +'<dd id="'+item.val().id+'" class="accordion-content accordionItem is-collapsed">'+item.val().text +'</dd>';
     } else
         if (tag[0][1] == array[7]) {
-            newItem += '<dt><a "href="#'+item.val().id+'" 1onclick="tougler()" class="accordion-title accordionTitle js-accordionTrigger">'+ item.val().title +'</a></dt>'
+            newItem += '<dt><a "href="#'+item.val().id+'" class="accordion-title accordionTitle js-accordionTrigger">'+ item.val().title +'</a></dt>'
             +'<dd id="'+item.val().id+'" class="accordion-content accordionItem is-collapsed">'+item.val().text +'</dd>';
         } else
             if (tag[0][2] == array[8]) {
-                newItem += '<dt><a " href="#'+item.val().id+'" 1onclick="tougler()" class="accordion-title accordionTitle js-accordionTrigger">'+ item.val().title +'</a></dt>'
+                newItem += '<dt><a " href="#'+item.val().id+'" class="accordion-title accordionTitle js-accordionTrigger">'+ item.val().title +'</a></dt>'
             +'<dd id="'+item.val().id+'" class="accordion-content accordionItem is-collapsed">'+item.val().text +'</dd>';
            
             }
@@ -125,15 +125,15 @@ function addItem(item, tag) {
 function addItem2(item, tag) {
     for (let i = 0; i < array.length; i++) {
         if (tag[0][0] == checkboxesChecked[i]) {
-            newItem += '<dt><a href="#'+item.val().id+'" 1onclick="tougler()" class="accordion-title accordionTitle js-accordionTrigger">'+ item.val().title +'</a></dt>'
+            newItem += '<dt><a href="#'+item.val().id+'"  class="accordion-title accordionTitle js-accordionTrigger">'+ item.val().title +'</a></dt>'
                 +'<dd id="'+item.val().id+'" class="accordion-content accordionItem is-collapsed">'+item.val().text +'</dd>';
         } else
             if (tag[0][1] == checkboxesChecked[i]) {
-                newItem += '<dt><a "href="#'+item.val().id+'" 1onclick="tougler()" class="accordion-title accordionTitle js-accordionTrigger">'+ item.val().title +'</a></dt>'
+                newItem += '<dt><a "href="#'+item.val().id+'"  class="accordion-title accordionTitle js-accordionTrigger">'+ item.val().title +'</a></dt>'
                 +'<dd id="'+item.val().id+'" class="accordion-content accordionItem is-collapsed">'+item.val().text +'</dd>';
             } else
                 if (tag[0][2] == checkboxesChecked[i]) {
-                    newItem += '<dt><a " href="#'+item.val().id+'" 1onclick="tougler()" class="accordion-title accordionTitle js-accordionTrigger">'+ item.val().title +'</a></dt>'
+                    newItem += '<dt><a " href="#'+item.val().id+'"  class="accordion-title accordionTitle js-accordionTrigger">'+ item.val().title +'</a></dt>'
                 +'<dd id="'+item.val().id+'" class="accordion-content accordionItem is-collapsed">'+item.val().text +'</dd>';
                
                 }
@@ -147,9 +147,18 @@ function addItem2(item, tag) {
 function getCheckedCheckBoxes() {
     checkboxesChecked.length = 0;
     var checkboxes = document.getElementsByClassName('checkbox');
+    for (i in checkboxes){
+        if (checkboxes[i].value == arguments[0]) {
+            checkboxes[i].checked = true;
+        } else if(checkboxes[i].value == arguments[1]){
+            checkboxes[i].checked = true;
+        } else if (checkboxes[i].value == arguments[2]) {
+            checkboxes[i].checked = true;
+        }
+    }
     for (var index = 0; index < checkboxes.length; index++) {
         if (checkboxes[index].checked) {
-            checkboxesChecked.push(checkboxes[index].value); // положим в массив выбранный
+            checkboxesChecked.push(checkboxes[index].value);
         }
     }
 }
@@ -225,6 +234,7 @@ if (array[9]) {
         } else {
             array[5] = document.getElementById("form-temperature-possibly").value;
         };
+        getCheckedCheckBoxes(array[6],array[7],array[8]);
         bench.style.display = 'none';
         sidebar.style.display = "block";
         call1();
@@ -232,14 +242,3 @@ if (array[9]) {
     });
 
 }
-
-
-// function tougler(e) {
-//     accordionToggles = d.querySelectorAll('.js-accordionTrigger');
-//     console.log(e.target.parentNode.nextElementSibling.id);
-//     for(var i = 0;i < accordionToggles.length;i++){
-//         if (accorditionTougles[i] == e.target.parentNode.nextElementSibling.id) {
-            
-//         }
-//     }
-// }
