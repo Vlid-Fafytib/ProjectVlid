@@ -37,20 +37,6 @@ body{
 	border-bottom: 2px dotted grey;
 }
 
-header{
-    width: 100%;
-    height: 50px;
-    margin: 0;
-    padding: 0;
-    background-color: #38cc70;
-}
-header > h1{
-    font-size: 30pt;
-    color: #fff;
-    text-align: center;
-    margin: 0;
-}
-
 .radio {
 	margin: 16px 0;
 	display: block;
