@@ -281,5 +281,3 @@ button:active::after {
 .animateOut {
   animation: accordionOut 0.45s alternate linear both 1;
 }
-
-/*  ЖОПА */
