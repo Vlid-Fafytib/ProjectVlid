@@ -31,126 +31,95 @@ const page1 = {
         this.form2.innerHTML = "";
         this.form3.innerHTML = "";
         for (let i in item) {
-            // this.tags.push(item.val().tags.split(","));
             let tmp = item[i].tags.split(',');
-           
-            if (!this.what.includes(tmp[0])) 
+
+            if (!this.what.includes(tmp[0]))
                 this.what.push(tmp[0]);
-            if (!this.where.includes(tmp[1])) 
+            if (!this.where.includes(tmp[1]))
                 this.where.push(tmp[1]);
-            if (!this.part.includes(tmp[2])) 
+            if (!this.part.includes(tmp[2]))
                 this.part.push(tmp[2]);
         }
-        this.what.forEach(item=>{
+        this.what.forEach(item => {
             this.post1.innerHTML += `<option value="${item}">${item}</option>`;
             this.form1.innerHTML += `<p class="aligner2"><label><input type="checkbox" value="${item}" name="tags-form1" class="checkbox">${item}</label></p>`;
-        } )
-        this.where.forEach(item=>{
+        })
+        this.where.forEach(item => {
             this.post2.innerHTML += `<option value="${item}">${item}</option>`;
             this.form2.innerHTML += `<p class="aligner2"><label><input type="checkbox" value="${item}" name="tags-form2" class="checkbox">${item}</label></p>`;
-        } )
-        this.part.forEach(item=>{
+        })
+        this.part.forEach(item => {
             this.post3.innerHTML += `<option value="${item}">${item}</option>`;
             this.form3.innerHTML += `<p class="aligner2"><label><input type="checkbox" value="${item}" name="tags-form3" class="checkbox">${item}</label></p>`;
-        } )
-
-           // this.tags[i] = item[i].tags.split(',');
-            // this.post1.innerHTML += `<option value="${this.tags[i][0]}">${this.tags[i][0]}</option>`;
-            // this.post2.innerHTML += `<option value="${this.tags[i][1]}">${this.tags[i][1]}</option>`;
-            // this.post3.innerHTML += `<option value="${this.tags[i][2]}">${this.tags[i][2]}</option>`;
-            // this.form1.innerHTML += `<p class="aligner"><label><input type="checkbox" value="${this.tags[i][0]}" name="tags-form1" class="checkbox">${this.tags[i][0]}</label></p>`;
-            // this.form2.innerHTML += `<p class="aligner"><label><input type="checkbox" value="${this.tags[i][0]}" name="tags-form2" class="checkbox">${this.tags[i][1]}</label></p>`;
-            // this.form3.innerHTML += `<p class="aligner"><label><input type="checkbox" value="${this.tags[i][0]}" name="tags-form3" class="checkbox">${this.tags[i][2]}</label></p>`;
-        
-
+        })
     }
 };
-// var intervalB = setInterval(function () { // вызов добавления интервалом, данный интервал нужно остановить!!!!
-function call1(temp) {
+function call1() {
     newItem = "";
     listRef = db.ref('all/articles/'); //это изменение пути для комментов, в зависимости от выбранного варианта
     listRef.on('child_added', function (data) {             //функция которая вызовет другую функцию с данными получеными из бд
         tag.length = 0;
 
         tag.push(data.val().tags.split(","));
-        if (temp == 1) {
-            addItem(data, tag);
-        } else {
-            addItem2(data, tag);
-        }
+        addItem2(data, tag);
+
         //вызов функции addItem
     });
     accordionToggles = d.querySelectorAll('.js-accordionTrigger');
     switchAccordion,
-touchSupported = ('ontouchstart' in window),
-switchAccordion = function(e) {
-    var thisAnswer = e.target.parentNode.nextElementSibling;
-        thisAnswer.classList.toggle('is-collapsed');
-       console.log(e.target.parentNode.nextElementSibling);
-    };
-    for (var i=0,len=accordionToggles.length; i<len; i++) {
-        if(touchSupported) {
-      accordionToggles[i].addEventListener('touchstart', false);
+        touchSupported = ('ontouchstart' in window),
+        switchAccordion = function (e) {
+            var thisAnswer = e.target.parentNode.nextElementSibling;
+            thisAnswer.classList.toggle('is-collapsed');
+            console.log(e.target.parentNode.nextElementSibling);
+        };
+    for (var i = 0, len = accordionToggles.length; i < len; i++) {
+        if (touchSupported) {
+            accordionToggles[i].addEventListener('touchstart', false);
+        }
+        accordionToggles[i].addEventListener('click', switchAccordion, false);
     }
-    accordionToggles[i].addEventListener('click', switchAccordion, false);
-  }
 }
-// }, 1000);
 
 
 page1.ref.on('value', function (snap) {  //функция создания списка с комментами
     this.list = snap.val();               //массив из строки 6 заполняется даннми из базы
     page1.createOptions(this.list);     //вызов функции для вывода вариантов списка из строки 12
 });
-function addItem(item, tag) {
-    if (tag[0][0] == array[6]) {
-        newItem += '<dt><a href="#'+item.val().id+'" class="accordion-title accordionTitle js-accordionTrigger">'+ item.val().title +'</a></dt>'
-            +'<dd id="'+item.val().id+'" class="accordion-content accordionItem is-collapsed">'+item.val().text +'</dd>';
-    } else
-        if (tag[0][1] == array[7]) {
-            newItem += '<dt><a "href="#'+item.val().id+'" class="accordion-title accordionTitle js-accordionTrigger">'+ item.val().title +'</a></dt>'
-            +'<dd id="'+item.val().id+'" class="accordion-content accordionItem is-collapsed">'+item.val().text +'</dd>';
-        } else
-            if (tag[0][2] == array[8]) {
-                newItem += '<dt><a " href="#'+item.val().id+'" class="accordion-title accordionTitle js-accordionTrigger">'+ item.val().title +'</a></dt>'
-            +'<dd id="'+item.val().id+'" class="accordion-content accordionItem is-collapsed">'+item.val().text +'</dd>';
-           
-            }
-    if (bench.style.display == "none") {
-        document.querySelector('.com_field').innerHTML = "";  //добавление элемента списка в список
-        document.querySelector('.com_field').innerHTML += newItem;
-    }
-}
 
 function addItem2(item, tag) {
     for (let i = 0; i < array.length; i++) {
         if (tag[0][0] == checkboxesChecked[i]) {
-            newItem += '<dt><a href="#'+item.val().id+'"  class="accordion-title accordionTitle js-accordionTrigger">'+ item.val().title +'</a></dt>'
-                +'<dd id="'+item.val().id+'" class="accordion-content accordionItem is-collapsed">'+item.val().text +'</dd>';
-        } else
-            if (tag[0][1] == checkboxesChecked[i]) {
-                newItem += '<dt><a "href="#'+item.val().id+'"  class="accordion-title accordionTitle js-accordionTrigger">'+ item.val().title +'</a></dt>'
-                +'<dd id="'+item.val().id+'" class="accordion-content accordionItem is-collapsed">'+item.val().text +'</dd>';
-            } else
-                if (tag[0][2] == checkboxesChecked[i]) {
-                    newItem += '<dt><a " href="#'+item.val().id+'"  class="accordion-title accordionTitle js-accordionTrigger">'+ item.val().title +'</a></dt>'
-                +'<dd id="'+item.val().id+'" class="accordion-content accordionItem is-collapsed">'+item.val().text +'</dd>';
-               
-                }
+            newItem += '<dt><a href="#' + item.val().id + '"  class="accordion-title accordionTitle js-accordionTrigger">' + item.val().title + '</a></dt>'
+                + '<dd id="' + item.val().id + '" class="accordion-content accordionItem is-collapsed">' + item.val().text + '</dd>';
+        } else if (tag[0][1] == checkboxesChecked[i]) {
+            if (newItem.indexOf(item.val().text) > -1) {
+                newItem += "";
+            } else {
+                newItem += '<dt><a href="#' + item.val().id + '"  class="accordion-title accordionTitle js-accordionTrigger">' + item.val().title + '</a></dt>'
+                    + '<dd id="' + item.val().id + '" class="accordion-content accordionItem is-collapsed">' + item.val().text + '</dd>';
+            }
+        } else if (tag[0][2] == checkboxesChecked[i]) {
+            if (newItem.indexOf(item.val().text) > -1) {
+                newItem += "";
+            } else {
+                newItem += '<dt><a href="#' + item.val().id + '"  class="accordion-title accordionTitle js-accordionTrigger">' + item.val().title + '</a></dt>'
+                    + '<dd id="' + item.val().id + '" class="accordion-content accordionItem is-collapsed">' + item.val().text + '</dd>';
+            }
+        }
         if (bench.style.display == "none") {
             document.querySelector('.accordion>dl').innerHTML = "";  //добавление элемента списка в список
             document.querySelector('.accordion>dl').innerHTML += newItem;
         }
     }
 }
-
 function getCheckedCheckBoxes() {
     checkboxesChecked.length = 0;
     var checkboxes = document.getElementsByClassName('checkbox');
-    for (i in checkboxes){
+    for (i in checkboxes) {
         if (checkboxes[i].value == arguments[0]) {
             checkboxes[i].checked = true;
-        } else if(checkboxes[i].value == arguments[1]){
+        } else if (checkboxes[i].value == arguments[1]) {
             checkboxes[i].checked = true;
         } else if (checkboxes[i].value == arguments[2]) {
             checkboxes[i].checked = true;
@@ -174,30 +143,24 @@ page1.form3.onchange = function () {
     getCheckedCheckBoxes();
     call1(0);
 }
-function loadfunc() {
+
+function fillArray() {
     array[6] = document.getElementById("probleme").value;
     array[7] = document.getElementById("location").value;
     array[8] = document.getElementById("ache").value;
-    call1(1);
+}
+function loadfunc() {
+    fillArray();
 }
 // }
 page1.post1.onchange = function () {
-    array[6] = document.getElementById("probleme").value;
-    array[7] = document.getElementById("location").value;
-    array[8] = document.getElementById("ache").value;
-    call1(1);
+    fillArray();
 }
 page1.post2.onchange = function () {
-    array[6] = document.getElementById("probleme").value;
-    array[7] = document.getElementById("location").value;
-    array[8] = document.getElementById("ache").value;
-    call1(1);
+    fillArray();
 }
 page1.post3.onchange = function () {
-    array[6] = document.getElementById("probleme").value;
-    array[7] = document.getElementById("location").value;
-    array[8] = document.getElementById("ache").value;
-    call1(1);
+    fillArray();
 }
 
 array[9] = document.getElementById("btn-submit");
@@ -234,7 +197,7 @@ if (array[9]) {
         } else {
             array[5] = document.getElementById("form-temperature-possibly").value;
         };
-        getCheckedCheckBoxes(array[6],array[7],array[8]);
+        getCheckedCheckBoxes(array[6], array[7], array[8]);
         bench.style.display = 'none';
         sidebar.style.display = "block";
         call1();
