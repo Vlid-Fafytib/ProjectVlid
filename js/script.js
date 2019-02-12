@@ -4,7 +4,6 @@ const db = firebase.database();
 let listRef = db.ref().child('all');
 var array = [];
 var tag = [];
-var global_tags = [];
 var newItem = "";
 var checkboxesChecked = [];
 var sidebar = document.getElementById("side-bar");
@@ -134,12 +133,15 @@ function getCheckedCheckBoxes() {
 }
 page1.form1.onchange = function () {
     getCheckedCheckBoxes();
+    call1();
 }
 page1.form2.onchange = function () {
     getCheckedCheckBoxes();
+    call1();
 }
 page1.form3.onchange = function () {
     getCheckedCheckBoxes();
+    call1();
 }
 
 function fillArray() {
