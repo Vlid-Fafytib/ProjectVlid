@@ -4,7 +4,6 @@ const db = firebase.database();
 let listRef = db.ref().child('all');
 var array = [];
 var tag = [];
-var global_tags = [];
 var newItem = "";
 var checkboxesChecked = [];
 var sidebar = document.getElementById("side-bar");
