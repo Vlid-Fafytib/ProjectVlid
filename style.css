@@ -2,8 +2,8 @@ body{
     margin: 0 auto;
     padding: 0;
 }
-
-.page-wrapper{
+/* Стили для главного дива */
+.page-wrapper{    
     margin-top: 0px;
     background-color: #fff ;
     width: 100%; 
@@ -11,30 +11,44 @@ body{
 	font-size: 20px;
 	overflow: hidden;
 }
-
+/* Основной выравниватель */
+.aligner{
+    margin-top: 0px;
+    text-align: center;
+    width: 50%;
+	margin: 0 auto 30px auto;
+}
+/* Второсортный выравниватель */
 .aligner2{
 	margin-top: 0px;
-    /* text-align: center; */
     width: 50%;
 
 	margin: 0 30px 30px 0;
 	margin-left: 25px;
 }
-
-.aligner{
-    margin-top: 0px;
-    text-align: center;
-    width: 50%;
-    margin: 0 auto 30px auto;
-}
-
+/* Выравниватель только для кнопки назад*/
 .aligner3{
 	margin-top: 0px;
     text-align: center;
     width: 50%;
     margin: 0 auto 0 auto;
 }
-
+/* Стили для блока разделителя форм */
+.border{
+	padding: 30px 0;
+	border: 2px dotted grey;
+	border-radius: 2%;
+	width: 25%;
+	margin: 0 auto;
+	margin-bottom: 30px;
+}
+/* Основной блок статей */
+.com_field{
+	width: 80%;
+	text-align: center;
+	float: right;
+}
+/* Микростили для радиокнопок */
 .radio {
 	margin: 16px 0;
 	display: block;
@@ -53,10 +67,6 @@ body{
 	position: relative;
 }
 
-.radio input + span:not(:empty) {
-	padding-left: 30px;
-}
-
 .radio input + span:before, .radio input + span:after {
 	content: '';
 	width: 22px;
@@ -67,18 +77,18 @@ body{
 	top: 0;
 	position: absolute;
 }
-
+/* установка анимации для нажатия на радиокнопку */
 .radio input + span:before {
 	background: #D1D7E3;
 	transition: background 0.2s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 2);
 }
-
+/* установка анимации для нажатия на радиокнопку */
 .radio input + span:after {
 	background: #fff;
 	transform: scale(0.78);
 	transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.4);
 }
-
+/* добавление цветового определения для выбраного варианта */
 .radio input:checked + span:before {
 	transform: scale(1.04);
 	background: #38cc70;
@@ -100,7 +110,7 @@ body{
 .radio:hover input:checked + span:after {
 	transform: scale(0.4);
 }
-
+/* стандартные стили для кнопки */
 button {
 	position: relative;
 	display: inline-block;
@@ -114,7 +124,7 @@ button {
 	font-weight: 700;
 	letter-spacing: .05em;
 }
-
+/* стили для внутренней части кнопки */
 button span {
 	position: relative;
 	z-index: 1;
@@ -127,7 +137,7 @@ button span {
 	box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.2);
 	transition: transform .1s, box-shadow .2s, background-color .2s;
 }
-
+/* начальные стили для кнопки, до нажатия на неё */
 button::after {
 	content: '';
 	position: absolute;
@@ -139,11 +149,7 @@ button::after {
 	box-shadow: 0 0 0px rgba(0, 0, 0, 0.2), inset 0 0 0px rgba(0, 0, 0, 0.2);
 	transition: box-shadow .1s;
 }
-
-button:hover span, button:focus span {
-	background-color:  #38cc70;
-}
-
+/* стили при нажатии на кнопку */
 button:active span {
 	background-color:  #38cc70;
 	transform: scale(0.97);
@@ -153,7 +159,7 @@ button:active span {
 button:active::after {
 	box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), inset -3px 3px 1em rgba(0, 0, 0, 0.2);
 }
-
+/* стили для обертки кнопки */
 .wrap {
 	width: 100%;
 	text-align: center;
@@ -166,40 +172,16 @@ button:active::after {
 .wrap button {
 	margin: 1em;
 }
-
-.border{
-	padding: 30px 0;
-	border: 2px dotted grey;
-	border-radius: 2%;
-	width: 25%;
-	margin: 0 auto;
-	margin-bottom: 30px;
+/* стили для сайд бара */
+#side-bar{
+	display: none;
+	width: 19%;
+	float: left;
+	overflow: hidden;
+	border-right: 2px dotted grey;
+	border-bottom: 2px dotted grey;
 }
-
-	.border{
-		padding: 20px 0;
-		border: 2px dotted grey;
-		border-radius: 2%;
-		width: 25%;
-		margin: 0 auto;
-		margin-bottom: 30px;
-	}
-	
-	.com_field{
-		width: 80%;
-		text-align: center;
-		float: right;
-	}
-	#side-bar{
-		display: none;
-		width: 19%;
-		float: left;
-		overflow: hidden;
-		border-right: 2px dotted grey;
-		border-bottom: 2px dotted grey;
-	}
-
-
+/* настройки для экранов с максимальным разрешение 1224 пикселя */
 @media only screen and (max-width : 1224px) {
 	.border{
 		padding: 20px 0;
@@ -243,7 +225,7 @@ button:active::after {
 		margin-left: 25%;
 	}
 }
-
+/* настройки для экранов с максимальным разрешением 768 */
 @media only screen and (max-width : 768px) {
 	.border{
 		padding: 20px 0;
@@ -254,8 +236,6 @@ button:active::after {
 		margin-bottom: 30px;
 	}
 }
- 
-
 
 .last{
 	margin-bottom: 0;
@@ -265,9 +245,7 @@ button:active::after {
 	padding-top: 25px;
 	color: #444;
 }
-
-
-
+/* тут начинаются стили для акордионов */
 .heading-primary {
   font-size: 2em;
   padding: 2em;
@@ -308,7 +286,7 @@ button:active::after {
   transition: background-color 0.3s ease-in-out;
   border-bottom: 1px solid #30bb64;
 }
-
+/* при наведении на статью, она должна подсвечиваться  */
 .accordionTitle:hover,
 .accordion__Heading:hover {
   background-color: #2ba659;
@@ -326,19 +304,19 @@ button:active::after {
   max-height: 150em;
   transition: max-height 1s;
 }
-
+/* скрытая статья, присваивается дефолтно, и после воторого нажатия */
 .accordionItem.is-collapsed {
   max-height: 0;
 }
-
+/* раскрытая статья, подстраивается под размер статьи, получает этот класс после первого нажатия на статью */
 .no-js .accordionItem.is-collapsed {
   max-height: auto;
 }
-
+/* задания параметров анимации открытия */
 .animateIn {
   animation: accordionIn 0.45s normal linear both 1;
 }
-
+/* задания параметров анимации заткрытия */
 .animateOut {
   animation: accordionOut 0.45s alternate linear both 1;
 }
