@@ -28,7 +28,12 @@ body{
     margin: 0 auto 30px auto;
 }
 
-
+.aligner3{
+	margin-top: 0px;
+    text-align: center;
+    width: 50%;
+    margin: 0 auto 0 auto;
+}
 
 .radio {
 	margin: 16px 0;
@@ -155,7 +160,7 @@ button:active::after {
 	position: relative;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	margin-top: 80px;
+	margin-top: 50px;
 }
 
 .wrap button {

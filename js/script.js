@@ -9,7 +9,8 @@ var newItem = "";
 var checkboxesChecked = [];
 var sidebar = document.getElementById("side-bar");
 var bench = document.getElementById("myform");
-var com_fielder = document.getElementsByClassName("com_field");
+var com_fielder = document.getElementById("com_field");
+var esc = document.getElementById("btn-esc");
 const page1 = {
     post1: document.getElementById("probleme"),
     post2: document.getElementById("location"),
@@ -152,12 +153,23 @@ function loadfunc() {
 // }
 page1.post1.onchange = function () {
     fillArray();
+    call1();
 }
 page1.post2.onchange = function () {
     fillArray();
+    call1();
 }
 page1.post3.onchange = function () {
     fillArray();
+    call1();
+}
+
+esc.onclick = function () {
+    
+    bench.style.display = 'block';
+    com_fielder.style.display = "none";
+    sidebar.style.display = "none";
+    
 }
 
 array[9] = document.getElementById("btn-submit");
@@ -197,6 +209,9 @@ if (array[9]) {
         getCheckedCheckBoxes(array[6], array[7], array[8]);
         bench.style.display = 'none';
         sidebar.style.display = "block";
+        if (com_fielder.style.display == "none"){
+            com_fielder.style.display = "block";
+        }
         call1();
         // Пройдёмся по всем полям
     });
