@@ -132,12 +132,15 @@ function getCheckedCheckBoxes() {
 }
 page1.form1.onchange = function () {
     getCheckedCheckBoxes();
+    call1();
 }
 page1.form2.onchange = function () {
     getCheckedCheckBoxes();
+    call1();
 }
 page1.form3.onchange = function () {
     getCheckedCheckBoxes();
+    call1();
 }
 
 function fillArray() {
