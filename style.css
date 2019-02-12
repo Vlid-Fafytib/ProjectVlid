@@ -28,14 +28,7 @@ body{
     margin: 0 auto 30px auto;
 }
 
-#side-bar{
-	display: none;
-	width: 19%;
-	float: left;
-	overflow: hidden;
-	border-right: 2px dotted grey;
-	border-bottom: 2px dotted grey;
-}
+
 
 .radio {
 	margin: 16px 0;
@@ -178,6 +171,87 @@ button:active::after {
 	margin-bottom: 30px;
 }
 
+	.border{
+		padding: 20px 0;
+		border: 2px dotted grey;
+		border-radius: 2%;
+		width: 25%;
+		margin: 0 auto;
+		margin-bottom: 30px;
+	}
+	
+	.com_field{
+		width: 80%;
+		text-align: center;
+		float: right;
+	}
+	#side-bar{
+		display: none;
+		width: 19%;
+		float: left;
+		overflow: hidden;
+		border-right: 2px dotted grey;
+		border-bottom: 2px dotted grey;
+	}
+
+
+@media only screen and (max-width : 1224px) {
+	.border{
+		padding: 20px 0;
+		border: 2px dotted grey;
+		border-radius: 2%;
+		width: 50%;
+		margin: 0 auto;
+		margin-bottom: 30px;
+	}
+
+	.container {
+		max-width: 960px;
+		margin: 0 auto;
+		padding: 2em 0 2em 0;
+		width: 80%;
+	  }
+
+	  #side-bar{
+		display: none;
+		width: 100%;
+		margin: 0 auto;
+		text-align: center;
+		border-bottom: 2px dotted grey;
+	}
+
+	.com_field{
+		width: 100%;
+		text-align: center;
+		float: right;
+		overflow: hidden;
+	}
+
+	.fomer{
+		text-align: center;
+		width: 75%;
+		margin: 0 auto;
+	}
+
+	.aligner2{
+		text-align: center;
+		margin-left: 25%;
+	}
+}
+
+@media only screen and (max-width : 768px) {
+	.border{
+		padding: 20px 0;
+		border: 2px dotted grey;
+		border-radius: 2%;
+		width: 75%;
+		margin: 0 auto;
+		margin-bottom: 30px;
+	}
+}
+ 
+
+
 .last{
 	margin-bottom: 0;
 }
@@ -187,11 +261,7 @@ button:active::after {
 	color: #444;
 }
 
-.com_field{
-	width: 80%;
-	text-align: center;
-	float: right;
-}
+
 
 .heading-primary {
   font-size: 2em;
