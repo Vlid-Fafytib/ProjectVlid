@@ -12,13 +12,75 @@
     <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase-auth.js"></script>
 </head>
 <body>
-    <div class="container">
-        <input type="email" id="txtEmail" placeholder="Email:">
-        <input type="password" id="txtPassword" placeholder="Password:"><br>
-        <button id="btnLogin" class="btn btn-action">Log In</button>
-        <button id="btnSignUp" class="btn btn-secondary">Sign Up</button>
-        <button id="btnLogout" class="btn btn-action hide">Log Out</button>
-    </div>
+    <!-- <div class="page-wrappe">
+        <div class="contain" id="sign-up">
+            <h4>Sign Up</h4>
+            <div class="sign-content">
+                    <input type="text" id="txtNick" placeholder="NickName:"><br>
+                    <input type="email" id="txtEmail" placeholder="Email:"><br>
+                    <input type="password" id="txtPassword" placeholder="Password:"><br>
+                    <button id="btnSignUp" class="btn btn-secondary">Sign Up</button>
+            </div>
+        </div>
+        <div class="contain" id="log-in">
+            <h4>Log In</h4>
+            <div class="log-content none">
+                <input type="email" id="txtEmail" placeholder="Email:"><br>
+                <input type="password" id="txtPassword" placeholder="Password:"><br>
+                <button id="btnLogin" class="btn btn-action">Log In</button>
+                 <button id="btnSignUp" class="btn btn-secondary">Sign Up</button>
+                <button id="btnLogout" class="btn btn-action hide">Log Out</button>
+            </div>
+        </div>
+    </div> -->
+ 
+<div class="container">
+        <input type="radio" name="tab" id="signin" checked="checked"/>
+        <input type="radio" name="tab" id="register"/>
+        <div class="pages">
+          <div class="page">
+            <div class="input">
+              <div class="title"> Email</div>
+              <input class="text" id="signEmail" type="Email" placeholder="Email"/>
+            </div>
+            <div class="input">
+              <div class="title"> PASSWORD</div>
+              <input class="text" id="signPassword" type="password" placeholder="Password"/>
+            </div>
+            <div class="input">
+              <input type="submit" id="btnSignIn" value="Login"/>
+            </div>
+            <div class="input">
+                <input type="submit" class="hide" id="btnLogout" value="Log Out"/>
+            </div>
+          </div>
+          <div class="page signup">
+            <div class="input">
+              <div class="title"> NAME</div>
+              <input class="text" id="regNick" type="text" placeholder="Name"/>
+            </div>
+            <div class="input">
+              <div class="title"> EMAIL</div>
+              <input class="text" id="regEmail" type="email" placeholder="Email"/>
+            </div>
+            <div class="input">
+                <div class="title"> PASSWORD</div>
+                <input class="text" id="regPassword" type="password" placeholder="Password"/>
+            </div>
+            <div class="input">
+              <input type="submit" id="btnSignUp" value="SIGN ME UP!"/>
+            </div>
+          </div>
+        </div>
+        <div class="tabs">
+          <label class="tab" for="signin">
+            <div class="text">Sign In</div>
+          </label>
+          <label class="tab" for="register">
+            <div class="text">Register</div>
+          </label>
+        </div>
+      </div>
     <script src="script.js"></script>
 </body>
 </html>

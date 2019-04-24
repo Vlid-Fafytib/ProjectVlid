@@ -10,16 +10,19 @@
     firebase.initializeApp(config); 
 //Get elements
 
-const txtEmail = document.getElementById("txtEmail");
-const txtPassword = document.getElementById("txtPassword");
-const btnLogin = document.getElementById("btnLogin");
+const signEmail = document.getElementById("signEmail");
+const signPassword = document.getElementById("signPassword");
+const logNick = document.getElementById('regNick');
+const regEmail = document.getElementById("regEmail");
+const regPassword = document.getElementById("regPassword");
+const btnLogin = document.getElementById("btnSignIn");
 const btnSignUp = document.getElementById("btnSignUp");
 const btnLogout = document.getElementById("btnLogout");
-
+let nickname;
 btnLogin.addEventListener('click', e => {
     //Get email and pass
-    const email = txtEmail.value;
-    const pass = txtPassword.value;
+    const email = signEmail.value;
+    const pass = signPassword.value;
     const auth = firebase.auth();
     //Sign in
     const promise = auth.signInWithEmailAndPassword(email, pass);
@@ -29,9 +32,10 @@ btnLogin.addEventListener('click', e => {
 // Add signup button
 btnSignUp.addEventListener('click', e => {
         //Get email and pass
-        const email = txtEmail.value;
-        const pass = txtPassword.value;
+        const email = regEmail.value;
+        const pass = regPassword.value;
         const auth = firebase.auth();
+        nickname = logNick.value;
         //Sign in
         const promise = auth.createUserWithEmailAndPassword(email, pass);
         promise
