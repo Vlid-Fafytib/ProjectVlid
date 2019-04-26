@@ -29,7 +29,7 @@
     overflow: hidden;
     -webkit-animation: hi 0.5s;
             animation: hi 0.5s;
-    -webkit-transform: translateZ(0px);
+    
   }
   .container * {
     box-sizing: border-box;
