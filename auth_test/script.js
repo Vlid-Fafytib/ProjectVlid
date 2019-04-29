@@ -28,6 +28,8 @@
         auth.signInWithEmailAndPassword(email, pass)
         .catch(e => console.log(e.message))
         .then(e => {
+            localStorage.setItem("passs", pass);
+            localStorage.setItem("email", email);
             document.location.href = "../index.html";
         });
 
@@ -51,6 +53,8 @@
                             displayName: nickname// some displayName, // some photo url
                         })
                     }
+                    localStorage.setItem("pass", pass);
+                    localStorage.setItem("email", email);
                     document.location.href = "../index.html";
                 }
                 )
@@ -67,15 +71,22 @@
     firebase.auth().onAuthStateChanged(user => {
         
         if (user) {
-            var displayName = user.displayName;
-            var email = user.email;
+            // var displayName = user.displayName;
+            // var email = user.email;
             var emailVerified = user.emailVerified;
             var photoURL = user.photoURL;
             var isAnonymous = user.isAnonymous;
-            var uid = user.uid;
-            var providerData = user.providerData;
-            console.log(uid);
-            userInfo(user);
+            // var uid = user.uid;
+            localStorage.setItem("uid", user.uid);
+            localStorage.setItem("displayName", user.displayName);
+            localStorage.setItem("email", user.email);
+            localStorage.setItem("isAnonymous", user.isAnonymous);
+            localStorage.setItem("emailVerified", user.emailVerified);
+            localStorage.setItem("password", user.pass)
+            // localStorage.setItem("profile", profile);
+            // var providerData = user.providerData;
+            // console.log(uid);
+            // userInfo(user, uid);
             btnLogout.classList.remove("hide");
         } else {
             console.log('not logged in');
@@ -83,17 +94,17 @@
         }
     });
 
-    function userInfo(user) {
-        // console.log(nickname);
-        if (user != null) {
-            user.providerData.forEach(function (profile) {
-                console.log("Sign-in provider: " + profile.providerId);
-                console.log("  Provider-specific UID: " + profile.uid);
-                console.log("  Name: " + profile.displayName); 
-                console.log("  Email: " + profile.email);
-                // console.log("  Photo URL: " + profile.photoURL);
-            });
-        }
-    }
+    // function userInfo(user, uid) {
 
+    //     if (user != null) {
+    //         user.providerData.forEach(function (profile) {
+    //             localStorage.setItem("providerId", profile.providerId);
+    //             // localStorage.setItem("uid", uid);
+    //             localStorage.setItem("displayName", profile.displayName);
+    //             localStorage.setItem("email", profile.email);
+    //             localStorage.setItem("profile", profile);
+    //             // // console.log("  Photo URL: " + profile.photoURL);
+    //         });
+    //     }
+    // }
 }());

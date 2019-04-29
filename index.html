@@ -9,10 +9,15 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase-auth.js"></script>
     <script> // Initialize Firebase
         var config = {
             apiKey: "AIzaSyAnJvlFlRek-KgQlsvAq1dkJgxT-pPY0hQ",
-            databaseURL: "https://projectvlid.firebaseio.com/",
+            authDomain: "projectvlid.firebaseapp.com",
+            databaseURL: "https://projectvlid.firebaseio.com",
+            projectId: "projectvlid",
+            storageBucket: "projectvlid.appspot.com",
+            messagingSenderId: "134314771529"
         };
         firebase.initializeApp(config); 
     </script>
@@ -20,7 +25,30 @@
 </head>
 
 <body>
+    <nav>
+      <ul>
+        <!-- <li><a href="#">View</a></li> -->
+        <li class="drop">
+          <a href="#">Аккаунт</a>
+          
+          <div class="dropdownContain">
+            <div class="dropOut">
+              <div class="triangle"></div>
+              <ul>
+                <li>Избранные статьи</li>
+                <li>Настройки аккаунта</li>
+                <li>Сменить Аккаунт</li>
+                <li id="menu_logout">Выйти из учётной записи</li>
+              </ul>
+            </div>
+          </div>
+        
+        </li>
+        <li><a href="#">Помощь</a></li>
+      </ul>
+  </nav>
     <div class="page-wrapper">
+        
         <form id="myform" action="">
             <h1 class="aligner title-wrapp">Что случилось?</h1>
             <div class="border">
@@ -40,69 +68,6 @@
                     <label for=""> Что болит?
                         <select name="problem" id="ache" <option value="Bench"></option>
                         </select>
-                    </label>
-                </p>
-            </div>
-            <div class="border">
-                <p class="aligner">Сколько вам полных лет?
-                    <label for="">
-                        <input min="0" max="100" type="number" name="age" id="form-age">
-                    </label>
-                </p>
-                <p class="aligner">Ваш рост.
-                    <label for="">
-                        <input min="45" max="250" type="number" name="growth" id="form-growth">
-                    </label>
-                </p>
-                <p class="aligner">Ваш вес.
-                    <label for="">
-                        <input min="3" max="300" type="number" name="weight" id="form-weight">
-                    </label>
-                </p>
-            </div>
-            <div class="border">
-                <p class="aligner">
-                    Ваш пол?
-                    <label class="radio">
-                        <input type="radio" id="form-male" name="gender" value="male" checked>
-                        <span>Мужчина</span>
-                    </label></p>
-                <p class="aligner">
-                    <label class="radio">
-                        <input type="radio" id="form-female" name="gender" value="female">
-                        <span>Женщина</span>
-                    </label>
-                </p>
-            </div>
-            <div class="border">
-                <p class="aligner">Давление повышено?
-                    <label class="radio">
-                        <input type="radio" name="pressure" value="yes" id="form-pressure-yes" checked>
-                        <span>Да</span>
-                    </label>
-                    <label class="radio">
-                        <input type="radio" name="pressure" id="form-pressure-no" value="no">
-                        <span>Нет</span>
-                    </label>
-                    <label class="radio">
-                        <input type="radio" name="pressure" id="form-pressure-possibly" value="possibly">
-                        <span>Не знаю</span>
-                    </label>
-                </p>
-            </div>
-            <div class="border">
-                <p class="aligner">Температура тела повышена?
-                    <label class="radio">
-                        <input type="radio" name="temperature" value="yes" id="form-temperature-yes" checked>
-                        <span>Да</span>
-                    </label>
-                    <label class="radio">
-                        <input type="radio" name="temperature" id="form-temperature-no" value="no">
-                        <span>Нет</span>
-                    </label>
-                    <label class="radio">
-                        <input type="radio" name="temperature" id="form-temperature-possibly" value="possibly">
-                        <span>Не знаю</span>
                     </label>
                 </p>
             </div>

@@ -24,7 +24,7 @@ const page1 = {
   where: [],
   part: [],
   list: [],
-  createOptions: function(item) {
+  createOptions: function (item) {
     //метод класса по заполнению
     this.post1.innerHTML = "";
     this.post2.innerHTML = "";
@@ -54,7 +54,7 @@ const page1 = {
   }
 };
 
-page1.ref.on("value", function(snap) {
+page1.ref.on("value", function (snap) {
   //функция создания списка с комментами
   this.list = snap.val(); //массив из строки 6 заполняется даннми из базы
   page1.createOptions(this.list); //вызов функции для вывода вариантов списка из строки 12
@@ -63,7 +63,7 @@ page1.ref.on("value", function(snap) {
 function call1() {
   newItem = "";
   listRef = db.ref("all/articles/"); //это изменение пути для комментов, в зависимости от выбранного варианта
-  listRef.on("child_added", function(data) {
+  listRef.on("child_added", function (data) {
     //функция которая вызовет другую функцию с данными получеными из бд
     tag.length = 0;
     tag.push(data.val().tags.split(","));
@@ -72,7 +72,7 @@ function call1() {
   accordionToggles = d.querySelectorAll(".js-accordionTrigger"); //далее код для того, что бы статьи открывались, и анимации работатали
   switchAccordion,
     (touchSupported = "ontouchstart" in window), //считывание нажатия
-    (switchAccordion = function(e) {
+    (switchAccordion = function (e) {
       //функция которая меняет положение статьи, либо закрыть либо открыть
       var thisAnswer = e.target.parentNode.nextElementSibling;
       thisAnswer.classList.toggle("is-collapsed");
@@ -166,18 +166,18 @@ function getCheckedCheckBoxes() {
   }
 }
 
-page1.form1.onchange = function() {
+page1.form1.onchange = function () {
   //функция которая обновляет статьи после изменения чекбокса, сделано посредством вызва функции вывода
   getCheckedCheckBoxes();
   call1();
 };
 
-page1.form2.onchange = function() {
+page1.form2.onchange = function () {
   getCheckedCheckBoxes();
   call1();
 };
 
-page1.form3.onchange = function() {
+page1.form3.onchange = function () {
   getCheckedCheckBoxes();
   call1();
 };
@@ -189,23 +189,23 @@ function fillArray() {
   array[8] = document.getElementById("ache").value;
 }
 
-page1.post1.onchange = function() {
+page1.post1.onchange = function () {
   //если селект изменили, вызвать функцию заполнения и функцию обвнления параметров в фильтрах
   fillArray();
   call1();
 };
 
-page1.post2.onchange = function() {
+page1.post2.onchange = function () {
   fillArray();
   call1();
 };
 
-page1.post3.onchange = function() {
+page1.post3.onchange = function () {
   fillArray();
   call1();
 };
 
-esc.onclick = function() {
+esc.onclick = function () {
   //если на кнопку назад нажали, тогда скрыть не нужное и открыть формы
 
   bench.style.display = "block";
@@ -218,35 +218,13 @@ array[9] = document.getElementById("btn-submit"); //инициализация �
 // Добавляем обработчик клика на кнопку отправки формы
 
 if (array[9]) {
-  array[9].addEventListener("click", function() {
+  array[9].addEventListener("click", function () {
     //большая функция по нажатию на кнопку дальше, заполняет все данныие из формы в этот массив
-    array[0] = document.getElementById("form-age").value;
-    array[1] = document.getElementById("form-growth").value;
-    array[2] = document.getElementById("form-weight").value;
+
     array[6] = document.getElementById("probleme").value;
     array[7] = document.getElementById("location").value;
     array[8] = document.getElementById("ache").value;
 
-    if (document.getElementById("form-male").cheсked) {
-      array[3] = document.getElementById("form-male").value;
-    } else {
-      array[3] = document.getElementById("form-female").value;
-    }
-    if (document.getElementById("form-pressure-yes").cheсked) {
-      array[4] = document.getElementById("form-pressure-yes").value;
-    } else if (document.getElementById("form-pressure-no").cheсked) {
-      array[4] = document.getElementById("form-pressure-no").value;
-    } else {
-      array[4] = document.getElementById("form-pressure-possibly").value;
-    }
-
-    if (document.getElementById("form-temperature-yes").cheсked) {
-      array[5] = document.getElementById("form-temperature-yes").value;
-    } else if (document.getElementById("form-temperature-no").cheсked) {
-      array[5] = document.getElementById("form-temperature-no").value;
-    } else {
-      array[5] = document.getElementById("form-temperature-possibly").value;
-    }
     getCheckedCheckBoxes(array[6], array[7], array[8]); //вызывает функцию по первичному определению чекбоксов
     bench.style.display = "none";
     sidebar.style.display = "block";
@@ -254,3 +232,13 @@ if (array[9]) {
     call1();
   });
 }
+const auth = firebase.auth();
+let email = localStorage.getItem("email");
+let pass = localStorage.getItem("passs");
+console.log(pass);
+auth.signInWithEmailAndPassword(email, pass)
+        .catch(e => console.log(e.message));
+
+
+let user = firebase.auth().currentUser;
+console.log(user);
