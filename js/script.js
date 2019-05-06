@@ -10,6 +10,7 @@ var sidebar = document.getElementById("side-bar"); //сайд бар с филь
 var bench = document.getElementById("myform"); //форма на главной
 var com_fielder = document.getElementById("com_field"); //див со статьями
 var esc = document.getElementById("btn-esc"); //кнопка над фильтрами для возврата к формам
+var acc = document.getElementById("menu_account");
 const page1 = {
   //обьявление класса, который достает данные из базы и заполняет формы
   post1: document.getElementById("probleme"),
@@ -233,12 +234,17 @@ if (array[9]) {
   });
 }
 const auth = firebase.auth();
-let email = localStorage.getItem("email");
-let pass = localStorage.getItem("passs");
-console.log(pass);
-auth.signInWithEmailAndPassword(email, pass)
-        .catch(e => console.log(e.message));
 
-
-let user = firebase.auth().currentUser;
-console.log(user);
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    console.log("sign in");
+    acc.innerHTML = "";
+    acc.innerText = "Здравствуйте, " + user.displayName;
+    // console.log(user.displayName);
+    // ...
+  } else {
+    // User is signed out.
+    console.log("sign out");
+  }
+});

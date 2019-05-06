@@ -17,7 +17,7 @@
     const btnLogin = document.getElementById("btnSignIn");
     const btnSignUp = document.getElementById("btnSignUp");
     const btnLogout = document.getElementById("btnLogout");
-    let nickname;
+    // let nickname;
 
     btnLogin.addEventListener('click', e => {
         //Get email and pass
@@ -50,12 +50,13 @@
                     const { user } = data
                     if (user) {
                         user.updateProfile({
-                            displayName: nickname// some displayName, // some photo url
+                            
+                            displayName: logNick.value //nickname// some displayName, // some photo url
                         })
                     }
                     localStorage.setItem("pass", pass);
                     localStorage.setItem("email", email);
-                    document.location.href = "../index.html";
+                    // document.location.href = "../index.html";
                 }
                 )
             .catch(e => {
@@ -71,22 +72,24 @@
     firebase.auth().onAuthStateChanged(user => {
         
         if (user) {
-            // var displayName = user.displayName;
-            // var email = user.email;
-            var emailVerified = user.emailVerified;
-            var photoURL = user.photoURL;
-            var isAnonymous = user.isAnonymous;
-            // var uid = user.uid;
-            localStorage.setItem("uid", user.uid);
-            localStorage.setItem("displayName", user.displayName);
-            localStorage.setItem("email", user.email);
-            localStorage.setItem("isAnonymous", user.isAnonymous);
-            localStorage.setItem("emailVerified", user.emailVerified);
-            localStorage.setItem("password", user.pass)
-            // localStorage.setItem("profile", profile);
-            // var providerData = user.providerData;
-            // console.log(uid);
-            // userInfo(user, uid);
+            // // var displayName = user.displayName;
+            // // var email = user.email;
+            // var emailVerified = user.emailVerified;
+            // var photoURL = user.photoURL;
+            // var isAnonymous = user.isAnonymous;
+            // // var uid = user.uid;
+            // localStorage.setItem("uid", user.uid);
+            // localStorage.setItem("displayName", user.displayName);
+            // localStorage.setItem("email", user.email);
+            // localStorage.setItem("isAnonymous", user.isAnonymous);
+            // localStorage.setItem("emailVerified", user.emailVerified);
+            // localStorage.setItem("password", user.pass);
+            // console.log(user.displayName);
+            // // localStorage.setItem("profile", profile);
+            // // var providerData = user.providerData;
+            // // console.log(uid);
+            // // console.log(nickname);
+            //  userInfo(user);
             btnLogout.classList.remove("hide");
         } else {
             console.log('not logged in');
@@ -94,17 +97,13 @@
         }
     });
 
-    // function userInfo(user, uid) {
+    function userInfo(user) {
 
-    //     if (user != null) {
-    //         user.providerData.forEach(function (profile) {
-    //             localStorage.setItem("providerId", profile.providerId);
-    //             // localStorage.setItem("uid", uid);
-    //             localStorage.setItem("displayName", profile.displayName);
-    //             localStorage.setItem("email", profile.email);
-    //             localStorage.setItem("profile", profile);
-    //             // // console.log("  Photo URL: " + profile.photoURL);
-    //         });
-    //     }
-    // }
+        if (user != null) {
+            user.providerData.forEach(function (profile) {
+
+                console.log("  Email " + profile.email);
+            });
+        }
+    }
 }());
