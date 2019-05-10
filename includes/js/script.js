@@ -1,5 +1,5 @@
 const preObject = document.getElementById("all");
-
+const auth = firebase.auth();
 const db = firebase.database(); //констатнта с базой данных
 let listRef = db.ref().child("all"); //определение откуда начинать доставать данные
 var array = [];
@@ -11,6 +11,8 @@ var bench = document.getElementById("myform"); //форма на главной
 var com_fielder = document.getElementById("com_field"); //див со статьями
 var esc = document.getElementById("btn-esc"); //кнопка над фильтрами для возврата к формам
 var acc = document.getElementById("menu_account");
+var change_acc = document.getElementById("change_acc");
+var menu_logout = document.getElementById("menu_logout");
 const page1 = {
   //обьявление класса, который достает данные из базы и заполняет формы
   post1: document.getElementById("probleme"),
@@ -233,8 +235,14 @@ if (array[9]) {
     call1();
   });
 }
-const auth = firebase.auth();
+change_acc.addEventListener('click', e =>{
+  document.location.href = "auth_test/auth.html";
+});
 
+menu_logout.addEventListener('click', e => {
+  firebase.auth().signOut();
+  document.location.href = "auth_test/auth.html";
+});
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.

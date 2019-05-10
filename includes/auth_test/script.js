@@ -28,8 +28,6 @@
         auth.signInWithEmailAndPassword(email, pass)
         .catch(e => console.log(e.message))
         .then(e => {
-            localStorage.setItem("passs", pass);
-            localStorage.setItem("email", email);
             document.location.href = "../index.html";
         });
 
@@ -50,7 +48,6 @@
                     const { user } = data
                     if (user) {
                         user.updateProfile({
-                            
                             displayName: logNick.value //nickname// some displayName, // some photo url
                         })
                     }
@@ -72,24 +69,7 @@
     firebase.auth().onAuthStateChanged(user => {
         
         if (user) {
-            // // var displayName = user.displayName;
-            // // var email = user.email;
-            // var emailVerified = user.emailVerified;
-            // var photoURL = user.photoURL;
-            // var isAnonymous = user.isAnonymous;
-            // // var uid = user.uid;
-            // localStorage.setItem("uid", user.uid);
-            // localStorage.setItem("displayName", user.displayName);
-            // localStorage.setItem("email", user.email);
-            // localStorage.setItem("isAnonymous", user.isAnonymous);
-            // localStorage.setItem("emailVerified", user.emailVerified);
-            // localStorage.setItem("password", user.pass);
-            // console.log(user.displayName);
-            // // localStorage.setItem("profile", profile);
-            // // var providerData = user.providerData;
-            // // console.log(uid);
-            // // console.log(nickname);
-            //  userInfo(user);
+            console.log("sign in");
             btnLogout.classList.remove("hide");
         } else {
             console.log('not logged in');
