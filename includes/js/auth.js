@@ -48,11 +48,9 @@
                     const { user } = data
                     if (user) {
                         user.updateProfile({
-                            displayName: logNick.value //nickname// some displayName, // some photo url
+                            displayName: logNick.value //nickname
                         })
                     }
-                    localStorage.setItem("pass", pass);
-                    localStorage.setItem("email", email);
                     document.location.href = "../html/index.html";
                 }
                 )
