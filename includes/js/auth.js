@@ -28,7 +28,7 @@
         auth.signInWithEmailAndPassword(email, pass)
         .catch(e => console.log(e.message))
         .then(e => {
-            document.location.href = "../index.html";
+            document.location.href = "../html/index.html";
         });
 
     });
@@ -53,7 +53,7 @@
                     }
                     localStorage.setItem("pass", pass);
                     localStorage.setItem("email", email);
-                    // document.location.href = "../index.html";
+                    document.location.href = "../html/index.html";
                 }
                 )
             .catch(e => {

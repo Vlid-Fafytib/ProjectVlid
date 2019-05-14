@@ -10,9 +10,6 @@ var sidebar = document.getElementById("side-bar"); //сайд бар с филь
 var bench = document.getElementById("myform"); //форма на главной
 var com_fielder = document.getElementById("com_field"); //див со статьями
 var esc = document.getElementById("btn-esc"); //кнопка над фильтрами для возврата к формам
-var acc = document.getElementById("menu_account");
-var change_acc = document.getElementById("change_acc");
-var menu_logout = document.getElementById("menu_logout");
 const page1 = {
   //обьявление класса, который достает данные из базы и заполняет формы
   post1: document.getElementById("probleme"),
@@ -235,24 +232,3 @@ if (array[9]) {
     call1();
   });
 }
-change_acc.addEventListener('click', e =>{
-  document.location.href = "auth_test/auth.html";
-});
-
-menu_logout.addEventListener('click', e => {
-  firebase.auth().signOut();
-  document.location.href = "auth_test/auth.html";
-});
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    // User is signed in.
-    console.log("sign in");
-    acc.innerHTML = "";
-    acc.innerText = "Здравствуйте, " + user.displayName;
-    // console.log(user.displayName);
-    // ...
-  } else {
-    // User is signed out.
-    console.log("sign out");
-  }
-});

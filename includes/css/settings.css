@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css?family=Lato");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+
+h1 {
+  margin: 20px;
+  text-align: center;
+  font-size: 34px;
+}
+
+.settings-message {
+  font-size: 20px;
+  text-align: center;
+}
+.settings-message--error {
+  color: #923;
+}
+.settings-message--success {
+  color: #293;
+}
+
+.hidden {
+  display: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 900px;
+  width: 100%;
+  margin: auto;
+  padding: 20px;
+}
+form > *:not(:first-of-type) {
+  margin-top: 20px;
+}
+@media (min-width: 750px) {
+  form {
+    flex-direction: row;
+  }
+  form > * {
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+  form .input__container {
+    padding: 0 50px;
+    flex-basis: calc(100% - 200px);
+  }
+  form .profile-pic__container {
+    flex-basis: 200px;
+  }
+}
+
+.profile-pic__container,
+.profile-pic__foreground {
+  line-height: 200px;
+  text-align: center;
+}
+
+.profile-pic__container {
+  overflow: hidden;
+  position: relative;
+  border: 3px solid #333;
+  border-radius: 100%;
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+
+.profile-pic__foreground {
+  position: absolute;
+  top: 0;
+  width: 200px;
+  height: 200px;
+  color: transparent;
+  cursor: pointer;
+  transition: color .2s, background-color .2s;
+}
+.profile-pic__foreground:hover {
+  color: #fff;
+  background-color: rgba(20, 20, 20, 0.85);
+}
+
+.input__container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.input__container > * {
+  margin-bottom: 20px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: 100%;
+}
+@media (min-width: 750px) {
+  .input__container > * {
+    flex-basis: 49%;
+  }
+}
+.input__container > * input {
+  width: 100%;
+}
+
+.input-action {
+  display: block;
+  text-align: right;
+  font-size: 12px;
+  color: #777;
+  cursor: pointer;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding: 5px 8px;
+}
+
+input[type="submit"] {
+  border: 2px solid #333;
+  border-radius: 3px;
+  padding: 7px 15px;
+  -webkit-appearance: none;
+  background-color: #FFF;
+  color: #333;
+  transition: color .2s, background-color .2s;
+}
+input[type="submit"]:hover, input[type="submit"]:focus {
+  background-color: #333;
+  color: #EEE;
+}
