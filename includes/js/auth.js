@@ -17,6 +17,7 @@
     const btnLogin = document.getElementById("btnSignIn");
     const btnSignUp = document.getElementById("btnSignUp");
     const btnLogout = document.getElementById("btnLogout");
+    let userRef = firebase.database().ref("all/users");
     // let nickname;
 
     btnLogin.addEventListener('click', e => {
@@ -26,10 +27,10 @@
         const auth = firebase.auth();
         //Sign in
         auth.signInWithEmailAndPassword(email, pass)
-        .catch(e => console.log(e.message))
-        .then(e => {
-            document.location.href = "../html/index.html";
-        });
+            .catch(e => console.log(e.message))
+            .then(e => {
+                document.location.href = "../html/index.html";
+            });
 
     });
 
@@ -39,7 +40,6 @@
         const email = regEmail.value;
         const pass = regPassword.value;
         const auth = firebase.auth();
-        nickname = logNick.value;
         //Sign in
         auth.createUserWithEmailAndPassword(email, pass)
             .then(
@@ -51,9 +51,10 @@
                             displayName: logNick.value //nickname
                         })
                     }
+                    addNewUserToDatabase(logNick.value, email, user.uid);
                     document.location.href = "../html/index.html";
                 }
-                )
+            )
             .catch(e => {
                 console.log(e)
             })
@@ -65,7 +66,7 @@
 
     // Add a realtime listener
     firebase.auth().onAuthStateChanged(user => {
-        
+
         if (user) {
             console.log("sign in");
             btnLogout.classList.remove("hide");
@@ -75,13 +76,14 @@
         }
     });
 
-    function userInfo(user) {
-
-        if (user != null) {
-            user.providerData.forEach(function (profile) {
-
-                console.log("  Email " + profile.email);
-            });
-        }
+    function addNewUserToDatabase(name, email, uid) {
+        var newUserRef  =   userRef.push();
+        newUserRef.set({
+            name: name,
+            email: email,
+            uid: uid,
+            favorites: ""
+        });
+        
     }
 }());
