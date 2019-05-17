@@ -10,6 +10,8 @@ var sidebar = document.getElementById("side-bar"); //сайд бар с филь
 var bench = document.getElementById("myform"); //форма на главной
 var com_fielder = document.getElementById("com_field"); //див со статьями
 var esc = document.getElementById("btn-esc"); //кнопка над фильтрами для возврата к формам
+var arrArt = {};
+
 const page1 = {
   //обьявление класса, который достает данные из базы и заполняет формы
   post1: document.getElementById("probleme"),
@@ -92,14 +94,12 @@ function addItem2(item, tag) {
     if (tag[0][0] == checkboxesChecked[i]) {
       //если теги из текущей статьи совпадают с тегом выбраным в фильтрах, тогда в переменную добавить то что ниже
       newItem +=
-        '<dt><a href="#' +
-        item.val().id +
-        '"  class="accordion-title accordionTitle js-accordionTrigger">' +
+        '<dt><a href="#" class="accordion-title accordionTitle js-accordionTrigger">' +
         item.val().title +
-        "</a></dt>" +
+        '</a></dt>' +
         '<dd id="' +
-        item.val().id +
-        '" class="accordion-content accordionItem is-collapsed">' +
+        item.key +
+        '" class="accordion-content accordionItem is-collapsed"><p><label class="label1" for="like"><input type="checkbox" class="barabash" name="like" id="like"><span></span></label></p>' +
         item.val().text +
         "</dd>";
     } else if (tag[0][1] == checkboxesChecked[i]) {
@@ -107,13 +107,11 @@ function addItem2(item, tag) {
         newItem += "";
       } else {
         newItem +=
-          '<dt><a href="#' +
-          item.val().id +
-          '"  class="accordion-title accordionTitle js-accordionTrigger">' +
+          '<dt><a href="#" class="accordion-title accordionTitle js-accordionTrigger">' +
           item.val().title +
           "</a></dt>" +
           '<dd id="' +
-          item.val().id +
+          item.key +
           '" class="accordion-content accordionItem is-collapsed">' +
           item.val().text +
           "</dd>";
@@ -123,13 +121,11 @@ function addItem2(item, tag) {
         newItem += "";
       } else {
         newItem +=
-          '<dt><a href="#' +
-          item.val().id +
-          '"  class="accordion-title accordionTitle js-accordionTrigger">' +
+          '<dt><a href="#"  class="accordion-title accordionTitle js-accordionTrigger">' +
           item.val().title +
           "</a></dt>" +
           '<dd id="' +
-          item.val().id +
+          item.key +
           '" class="accordion-content accordionItem is-collapsed">' +
           item.val().text +
           "</dd>";
