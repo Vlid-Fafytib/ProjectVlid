@@ -417,7 +417,7 @@ ul li:hover .dropOut { opacity: 1; margin-top: 8px; }
 
 .label1 {
 	width: 24px; /* Ширина рисунка */
-	height: 24px; /* Высота рисунка */
+	min-height: 24px; /* Высота рисунка */
 	display: block; /* Блочный элемент */
 	position: relative; /* Относительное позиционирование */
 }
@@ -427,8 +427,8 @@ ul li:hover .dropOut { opacity: 1; margin-top: 8px; }
 }
 
 .barabash + span {
-	/* position: relative; Абсолютное позиционирование */
-	/* left: 0; top: 0; */
+	/* Абсолютное позиционирование */	
+	position: absolute;
 	width: 100%; height: 100%;
 	background: url(../image/like.png) no-repeat; /* Фоновый рисунок */
 	cursor: pointer; /* Курсор в виде руки */

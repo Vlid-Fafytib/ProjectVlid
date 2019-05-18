@@ -98,8 +98,7 @@ function addItem2(item, tag) {
         item.val().title +
         '</a></dt>' +
         '<dd id="' +
-        item.key +
-        '" class="accordion-content accordionItem is-collapsed"><p><label class="label1" for="like"><input type="checkbox" class="barabash" name="like" id="like"><span></span></label></p>' +
+        '" class="accordion-content accordionItem is-collapsed"><p><label class="label1"><input type="checkbox" class="barabash like" name="like" id="'+ item.key + '"><span class="like"></span></label></p>' +
         item.val().text +
         "</dd>";
     } else if (tag[0][1] == checkboxesChecked[i]) {
@@ -111,8 +110,7 @@ function addItem2(item, tag) {
           item.val().title +
           "</a></dt>" +
           '<dd id="' +
-          item.key +
-          '" class="accordion-content accordionItem is-collapsed">' +
+          '" class="accordion-content accordionItem is-collapsed"><p><label class="label1"><input type="checkbox" class="barabash like" name="like" id="'+ item.key + '"><span class="like"></span></label></p>' +
           item.val().text +
           "</dd>";
       }
@@ -125,8 +123,7 @@ function addItem2(item, tag) {
           item.val().title +
           "</a></dt>" +
           '<dd id="' +
-          item.key +
-          '" class="accordion-content accordionItem is-collapsed">' +
+          '" class="accordion-content accordionItem is-collapsed"><p><label class="label1"><input type="checkbox" class="barabash like" name="like" id="'+ item.key + '"><span class="like"></span></label></p>' +
           item.val().text +
           "</dd>";
       }

@@ -18,7 +18,6 @@
     const btnSignUp = document.getElementById("btnSignUp");
     const btnLogout = document.getElementById("btnLogout");
     let userRef = firebase.database().ref("all/users");
-    // let nickname;
 
     btnLogin.addEventListener('click', e => {
         //Get email and pass
@@ -52,7 +51,6 @@
                         })
                     }
                     addNewUserToDatabase(logNick.value, email, user.uid);
-                    document.location.href = "../html/index.html";
                 }
             )
             .catch(e => {
@@ -84,6 +82,6 @@
             uid: uid,
             favorites: ""
         });
-        
+        document.location.href = "../html/index.html";
     }
 }());
