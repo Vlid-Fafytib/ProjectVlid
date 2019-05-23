@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,56 +23,58 @@
         firebase.initializeApp(config); 
     </script>
 </head>
+
 <body>
     <nav>
-            <ul>
-                <li class="drop">
+        <ul>
+            <li class="drop">
                 <a href="#" id="menu_account">Аккаунт</a>
-                
+
                 <div class="dropdownContain">
                     <div class="dropOut">
-                    <div class="triangle"></div>
-                    <ul>
-                        <li id="favorites">Избранные статьи</li>
-                        <li id="settings">Настройки аккаунта</li>
-                        <li id="change_acc">Сменить Аккаунт</li>
-                        <li id="menu_logout">Выйти из учётной записи</li>
-                    </ul>
+                        <div class="triangle"></div>
+                        <ul>
+                            <li id="favorites">Избранные статьи</li>
+                            <li id="settings">Настройки аккаунта</li>
+                            <li id="change_acc">Сменить Аккаунт</li>
+                            <li id="menu_logout">Выйти из учётной записи</li>
+                        </ul>
                     </div>
                 </div>
-                
-                </li>
-                <li><a href="index.html">Главная</a></li>
-            </ul>
-        </nav>
-        <h1> User Settings</h1>
-        <div class="settings-message" id="js-message"></div>
-        <form>
-          <div class="input__container">
+
+            </li>
+            <li><a href="index.html">Главная</a></li>
+        </ul>
+    </nav>
+    <h1> User Settings</h1>
+    <div class="settings-message" id="js-message"></div>
+    <form>
+        <div class="input__container">
             <div class="input-container__single">
-              <label for="name">Name:</label>
-              <input type="text" required name="name" id="name">
+                <label for="name">Name:</label>
+                <input type="text" required name="name" id="name">
             </div>
             <div class="input-container__single">
-              <label for="email">Email:</label>
-              <input type="email" required name="email" id="email">
+                <label for="email">Email:</label>
+                <input type="email" required name="email" id="email">
             </div>
             <div class="input-container__single">
-              <label for="js-password">Current password:</label>
-              <input type="password" required id="js-password" name="password">
-              <span id="js-toggle-password" class="input-action">Display password</span>
+                <label for="js-password">Current password:</label>
+                <input type="password" required id="js-password" name="password">
+                <span id="js-toggle-password" class="input-action">Display password</span>
             </div>
             <div class="input-container__single">
-              <label for="js-password-confirm">New password:</label>
-              <input type="password" required id="js-password-confirm" name="confirm-password">
-              <span class="input-action" id="js-suggest-password">Suggest Password</span>
+                <label for="js-password-confirm">New password:</label>
+                <input type="password" required id="js-password-confirm" name="confirm-password">
+                <span class="input-action" id="js-suggest-password">Suggest Password</span>
             </div>
-          </div>
-          
-          <input type="submit" value="Save Profile">
-        </form>
-            
+        </div>
+
+        <input type="submit" value="Save Profile">
+    </form>
+
     <script src="../js/settings.js"></script>
     <script src="../js/default.js"></script>
 </body>
+
 </html>

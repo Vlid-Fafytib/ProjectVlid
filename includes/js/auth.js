@@ -17,7 +17,6 @@
     const btnLogin = document.getElementById("btnSignIn");
     const btnSignUp = document.getElementById("btnSignUp");
     const btnLogout = document.getElementById("btnLogout");
-    let userRef = firebase.database().ref("all/users");
 
     btnLogin.addEventListener('click', e => {
         //Get email and pass
@@ -73,10 +72,9 @@
             btnLogout.classList.add("hide");
         }
     });
-
+    //set new user to DB 
     function addNewUserToDatabase(name, email, uid) {
-        var newUserRef  =   userRef.push();
-        newUserRef.set({
+        firebase.database().ref('all/users/' + uid).set({
             name: name,
             email: email,
             uid: uid,
