@@ -17,7 +17,7 @@
     const btnLogin = document.getElementById("btnSignIn");
     const btnSignUp = document.getElementById("btnSignUp");
     const btnLogout = document.getElementById("btnLogout");
-
+    
     btnLogin.addEventListener('click', e => {
         //Get email and pass
         const email = signEmail.value;
@@ -54,7 +54,7 @@
             )
             .catch(e => {
                 console.log(e)
-            })
+            });
     });
 
     btnLogout.addEventListener('click', e => {
@@ -74,12 +74,10 @@
     });
     //set new user to DB 
     function addNewUserToDatabase(name, email, uid) {
-        firebase.database().ref('all/users/' + uid).set({
-            name: name,
-            email: email,
-            uid: uid,
-            favorites: ""
-        });
-        document.location.href = "../html/index.html";
+        let userRef = firebase.database().ref("all/users/");
+        userRef.child(uid).set({'name': name, 'email': email, 'uid': uid, 'favorites': ""});
+        setInterval(() => {
+            document.location.href = "../html/index.html";
+        }, 1000);
     }
 }());

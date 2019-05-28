@@ -88,10 +88,16 @@ function call1() {
 }
 
 
-function addItem2(item, tag) {
+function addItem2(item, tag) { 
     //функция для вывода статей по чекбоксам
+    var checked = "checked";
+    if (isFavorite(item.key)){
+            checked = "checked";
+        } else{
+            checked = "";
+        }
     for (let i = 0; i < array.length; i++) {
-        console.log(isFavorite(item.key));
+        //check about favorite article and note the heart if article is favorite 
         
         //проход по массиву с данными
         if (tag[0][0] == checkboxesChecked[i]) {
@@ -101,7 +107,7 @@ function addItem2(item, tag) {
                 item.val().title +
                 '</a></dt>' +
                 '<dd id="' +
-                '" class="accordion-content accordionItem is-collapsed"><p><label class="label1"><input type="checkbox" class="barabash like" name="like" id="' + item.key + '"><span class="like"></span></label></p>' +
+                '" class="accordion-content accordionItem is-collapsed"><p><label class="label1"><input type="checkbox" ' + checked + ' class="barabash like" name="like" id="' + item.key + '" onclick="changeTheFav('+ item.key +')"><span class="like"></span></label></p>' +
                 item.val().text +
                 "</dd>";
         } else if (tag[0][1] == checkboxesChecked[i]) {
@@ -113,12 +119,12 @@ function addItem2(item, tag) {
                     item.val().title +
                     "</a></dt>" +
                     '<dd id="' +
-                    '" class="accordion-content accordionItem is-collapsed"><p><label class="label1"><input type="checkbox" class="barabash like" name="like" id="' + item.key + '"><span class="like"></span></label></p>' +
+                    '" class="accordion-content accordionItem is-collapsed"><p><label class="label1"><input type="checkbox" ' + checked + ' class="barabash like" name="like" id="' + item.key + '" onclick="changeTheFav('+ item.key +')"><span class="like"></span></label></p>' +
                     item.val().text +
                     "</dd>";
             }
         } else if (tag[0][2] == checkboxesChecked[i]) {
-            if (newItem.indexOf(item.val().text) > -1) {
+            if (newItem.indexOf(item.val().text) > -1) {    
                 newItem += "";
             } else {
                 newItem +=
@@ -126,7 +132,7 @@ function addItem2(item, tag) {
                     item.val().title +
                     "</a></dt>" +
                     '<dd id="' +
-                    '" class="accordion-content accordionItem is-collapsed"><p><label class="label1"><input type="checkbox" class="barabash like" name="like" id="' + item.key + '"><span class="like"></span></label></p>' +
+                    '" class="accordion-content accordionItem is-collapsed"><p><label class="label1"><input type="checkbox" ' + checked + ' class="barabash like" name="like" id="' + item.key + '" onclick="changeTheFav('+ item.key +')"><span class="like"></span></label></p>' +
                     item.val().text +
                     "</dd>";
             }
@@ -229,22 +235,48 @@ if (array[9]) {
     });
 }
 
-function addFavorite(key) {
-    console.log(key)
+function changeTheFav(key) {
+    console.log(key.id);
+    if (isFavorite(key.id)){
+        readData(false, key.id)
+    } else{
+        readData(true, key.id)
+    }
+}
+function readData(bool, key) {
+    var refer = db.ref("all/users/");
+    if  (bool){
+        refer.child(auth.currentUser.uid).on("value",  function(snapshot){
+            // console.log(snapshot.val().favorites);
+            addFavorite(key, snapshot.val().favorites, refer);
+        });
+    }
+}
+function addFavorite(key, fav, refer) {
+    fav = fav + "," + key;
+    console.log("favorite - " + fav);
+    refer.child(auth.currentUser.uid).update({
+        'favorites': fav
+    });
+}
+
+function delFavorite(key) {
+    
 }
 //get info about article
 function isFavorite(key) {
     var favo;
     var mass;
+    var temp = false;
     var favorites = db.ref("all/users/" + auth.currentUser.uid);
     favorites.on("value", snap => {
         favo = snap.val().favorites;
         mass = favo.split(",");
-        // console.log(mass);
         mass.forEach(e =>{
             if (e == key){
-                return 1;
+                temp = true;
             }
         });
     });
+    return temp;
 }
