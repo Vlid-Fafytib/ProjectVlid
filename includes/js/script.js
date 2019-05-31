@@ -237,8 +237,10 @@ if (array[9]) {
 
 function changeTheFav(key) {
     console.log(key.id);
+    var refer = db.ref("all/users/");
     if (isFavorite(key.id)){
-        readData(false, key.id)
+       // readData(false, key.id)
+       addFavorite(key.id, favo, refer);
     } else{
         readData(true, key.id)
     }
@@ -253,28 +255,34 @@ function readData(bool, key) {
     }
 }
 function addFavorite(key, fav, refer) {
-    fav = fav + "," + key;
+    //fav = fav + "," + key;
     console.log("favorite - " + fav);
     refer.child(auth.currentUser.uid).update({
-        'favorites': fav
+        // email: auth.currentUser.email,
+        'favorites': fav + "," + key,
+        // name: auth.currentUser.displayName,
+        // uid: auth.currentUser.uid
     });
 }
 
 function delFavorite(key) {
     
 }
+var favo = '';
 //get info about article
 function isFavorite(key) {
-    var favo;
+    
     var mass;
     var temp = false;
     var favorites = db.ref("all/users/" + auth.currentUser.uid);
-    favorites.on("value", snap => {
+    favorites.once("value").then(snap => {
         favo = snap.val().favorites;
         mass = favo.split(",");
         mass.forEach(e =>{
             if (e == key){
                 temp = true;
+            }else {
+                temp = false;
             }
         });
     });
