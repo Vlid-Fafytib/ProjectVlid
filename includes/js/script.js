@@ -59,7 +59,7 @@ const page1 = {
 page1.ref.on("value", function (snap) {
     //функция создания списка с комментами
     this.list = snap.val(); //массив из строки 6 заполняется даннми из базы
-    page1.createOptions(this.list); //вызов функции для вывода вариантов списка из строки 12
+    page1.createOptions(this.list); //вызов функции для вывода вариантов
 });
 
 function call1() {
@@ -71,6 +71,8 @@ function call1() {
         tag.push(data.val().tags.split(","));
         addItem2(data, tag); //вызов функции
     });
+
+    
     accordionToggles = d.querySelectorAll(".js-accordionTrigger"); //далее код для того, что бы статьи открывались, и анимации работатали
     switchAccordion,
         (touchSupported = "ontouchstart" in window), //считывание нажатия
@@ -97,7 +99,6 @@ function addItem2(item, tag) {
             checked = "";
         }
     for (let i = 0; i < array.length; i++) {
-        //check about favorite article and note the heart if article is favorite 
         
         //проход по массиву с данными
         if (tag[0][0] == checkboxesChecked[i]) {
@@ -209,7 +210,6 @@ page1.post3.onchange = function () {
 
 esc.onclick = function () {
     //если на кнопку назад нажали, тогда скрыть не нужное и открыть формы
-
     bench.style.display = "block";
     com_fielder.style.display = "none";
     sidebar.style.display = "none";
@@ -221,8 +221,7 @@ array[9] = document.getElementById("btn-submit"); //инициализация �
 
 if (array[9]) {
     array[9].addEventListener("click", function () {
-        //большая функция по нажатию на кнопку дальше, заполняет все данныие из формы в этот массив
-
+        //функция по нажатию на кнопку дальше, заполняет все данныие из формы в этот массив
         array[6] = document.getElementById("probleme").value;
         array[7] = document.getElementById("location").value;
         array[8] = document.getElementById("ache").value;
@@ -269,9 +268,8 @@ function delFavorite(key) {
     
 }
 var favo = '';
-//get info about article
-function isFavorite(key) {
-    
+
+function isFavorite(key) { //функция на проверку измбранная ли данная статья у данного пользователя
     var mass;
     var temp = false;
     var favorites = db.ref("all/users/" + auth.currentUser.uid);

@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Настройки</title>
-    <link rel="stylesheet" href="../css/settings.css">
+    <title>Избранные статьи</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/fav.css">
     <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase-auth.js"></script>
@@ -23,7 +22,6 @@
         firebase.initializeApp(config); 
     </script>
 </head>
-
 <body>
     <nav>
         <ul>
@@ -46,35 +44,19 @@
             <li><a href="index.html">Главная</a></li>
         </ul>
     </nav>
-    <h1> User Settings</h1>
-    <div class="settings-message" id="js-message"></div>
-    <form>
-        <div class="input__container">
-            <div class="input-container__single">
-                <label for="name">Name:</label>
-                <input type="text" required name="name" id="name">
-            </div>
-            <div class="input-container__single">
-                <label for="email">Email:</label>
-                <input type="email" required name="email" id="email">
-            </div>
-            <div class="input-container__single">
-                <label for="js-password">Current password:</label>
-                <input type="password" required id="js-password" name="password">
-                <span id="js-toggle-password" class="input-action">Display password</span>
-            </div>
-            <div class="input-container__single">
-                <label for="js-password-confirm">New password:</label>
-                <input type="password" required id="js-password-confirm" name="confirm-password">
-                <span class="input-action" id="js-suggest-password">Suggest Password</span>
+    <div class="page" id="page">
+        <div class="com_field" id="com_field">
+            <div class="container">
+                <div class="accordion">
+                    <dl>
+                        
+                    </dl>
+                </div>
             </div>
         </div>
-
-        <input type="submit" value="Save Profile">
-    </form>
-
-    <script src="../js/settings.js"></script>
+    </div>
+    <script src="../js/script2.js"></script>   
+    <script src="../js/fav.js"></script>
     <script src="../js/default.js"></script>
 </body>
-
 </html>

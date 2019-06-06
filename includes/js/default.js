@@ -2,7 +2,7 @@ var acc = document.getElementById("menu_account");
 var change_acc = document.getElementById("change_acc");
 var menu_logout = document.getElementById("menu_logout");
 var settings = document.getElementById("settings");
-
+var favorites = document.getElementById("favorites");
 change_acc.addEventListener('click', e => {
     document.location.href = "auth.html";
 });
@@ -14,6 +14,10 @@ menu_logout.addEventListener('click', e => {
 
 settings.addEventListener('click', e => {
     document.location.href = "settings.html";
+});
+
+favorites.addEventListener('click', e => {
+    document.location.href = "favorites.html";
 });
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
