@@ -89,7 +89,6 @@ function call1() {
     }
 }
 
-
 function addItem2(item, tag) { 
     //функция для вывода статей по чекбоксам
     var checked = "checked";
@@ -236,53 +235,55 @@ if (array[9]) {
 
 function changeTheFav(key) {
     console.log(key.id);
-    var refer = db.ref("all/users/");
-    if (isFavorite(key.id)){
-       // readData(false, key.id)
-       addFavorite(key.id, favo, refer);
-    } else{
-        readData(true, key.id)
-    }
-}
-function readData(bool, key) {
-    var refer = db.ref("all/users/");
-    if  (bool){
-        refer.child(auth.currentUser.uid).on("value",  function(snapshot){
-            // console.log(snapshot.val().favorites);
-            addFavorite(key, snapshot.val().favorites, refer);
-        });
-    }
-}
-function addFavorite(key, fav, refer) {
-    //fav = fav + "," + key;
-    console.log("favorite - " + fav);
-    refer.child(auth.currentUser.uid).update({
-        // email: auth.currentUser.email,
-        'favorites': fav + "," + key,
-        // name: auth.currentUser.displayName,
-        // uid: auth.currentUser.uid
+    var favo = '';
+    var mass = [];
+    var favorites = db.ref("all/users/" + auth.currentUser.uid);
+    favorites.once("value").then(snap => {
+        favo = snap.val().favorites;
+        mass = favo.split(",");
+        if (!mass.includes(key.id)){
+            favorites.update({
+                'favorites': favo+','+key.id
+            });
+        } else if (mass.includes(key.id)) {
+            favo = "";
+            for (let i = 0; i < mass.length; i++) {
+                if (mass[i] != key.id && mass[i] != "") {
+                    if (favo == "") {
+                        favo += mass[i]; 
+                        console.log(favo + "1");
+                    }else{
+                        favo += "," + mass[i];
+                        console.log(favo + "2");
+                    }
+                } else{
+                    mass.splice(i, 1);
+                }
+            }
+            console.log(favo + "3");
+            favorites.update({
+                'favorites': favo
+            });
+        }
     });
 }
 
-function delFavorite(key) {
-    
-}
-var favo = '';
-
 function isFavorite(key) { //функция на проверку измбранная ли данная статья у данного пользователя
-    var mass;
+    var mass = [];
+    var favo = '';
     var temp = false;
     var favorites = db.ref("all/users/" + auth.currentUser.uid);
     favorites.once("value").then(snap => {
         favo = snap.val().favorites;
         mass = favo.split(",");
-        mass.forEach(e =>{
-            if (e == key){
-                temp = true;
-            }else {
-                temp = false;
-            }
-        });
+        if (mass.includes(key)){
+            temp = true;
+            let el = document.getElementById(key);
+            if(el) el.setAttribute('checked','checked');
+        }
+        else {
+            temp = false;
+        }
     });
     return temp;
 }
