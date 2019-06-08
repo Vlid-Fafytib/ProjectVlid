@@ -454,5 +454,8 @@ ul li:hover .dropOut { opacity: 1; margin-top: 8px; }
 }
 
 #title_fav{
+    margin-top: 75px;
     margin-right: 17%;
+    font-size: 29pt; 
+    font-family: 'Lato', sans-serif; 
 }

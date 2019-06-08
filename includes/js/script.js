@@ -103,7 +103,7 @@ function addItem2(item, tag) {
         if (tag[0][0] == checkboxesChecked[i]) {
             //если теги из текущей статьи совпадают с тегом выбраным в фильтрах, тогда в переменную добавить то что ниже
             newItem +=
-                '<dt><a href="#" class="accordion-title accordionTitle js-accordionTrigger">' +
+                '<dt><a href="#' + item.key + '" name="' + item.key + '" class="accordion-title accordionTitle js-accordionTrigger">' +
                 item.val().title +
                 '</a></dt>' +
                 '<dd id="' +
@@ -115,7 +115,7 @@ function addItem2(item, tag) {
                 newItem += "";
             } else {
                 newItem +=
-                    '<dt><a href="#" class="accordion-title accordionTitle js-accordionTrigger">' +
+                    '<dt><a href="#' + item.key + '" name="' + item.key + '" class="accordion-title accordionTitle js-accordionTrigger">' +
                     item.val().title +
                     "</a></dt>" +
                     '<dd id="' +
@@ -128,7 +128,7 @@ function addItem2(item, tag) {
                 newItem += "";
             } else {
                 newItem +=
-                    '<dt><a href="#"  class="accordion-title accordionTitle js-accordionTrigger">' +
+                    '<dt><a href="#' + item.key + '" name="' + item.key + '"  class="accordion-title accordionTitle js-accordionTrigger">' +
                     item.val().title +
                     "</a></dt>" +
                     '<dd id="' +
