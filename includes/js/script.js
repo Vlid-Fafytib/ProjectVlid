@@ -72,7 +72,7 @@ function call1() {
         addItem2(data, tag); //вызов функции
     });
 
-    
+
     accordionToggles = d.querySelectorAll(".js-accordionTrigger"); //далее код для того, что бы статьи открывались, и анимации работатали
     switchAccordion,
         (touchSupported = "ontouchstart" in window), //считывание нажатия
@@ -89,16 +89,16 @@ function call1() {
     }
 }
 
-function addItem2(item, tag) { 
+function addItem2(item, tag) {
     //функция для вывода статей по чекбоксам
     var checked = "checked";
-    if (isFavorite(item.key)){
-            checked = "checked";
-        } else{
-            checked = "";
-        }
+    if (isFavorite(item.key)) {
+        checked = "checked";
+    } else {
+        checked = "";
+    }
     for (let i = 0; i < array.length; i++) {
-        
+
         //проход по массиву с данными
         if (tag[0][0] == checkboxesChecked[i]) {
             //если теги из текущей статьи совпадают с тегом выбраным в фильтрах, тогда в переменную добавить то что ниже
@@ -107,7 +107,7 @@ function addItem2(item, tag) {
                 item.val().title +
                 '</a></dt>' +
                 '<dd id="' +
-                '" class="accordion-content accordionItem is-collapsed"><p><label class="label1"><input type="checkbox" ' + checked + ' class="barabash like" name="like" id="' + item.key + '" onclick="changeTheFav('+ item.key +')"><span class="like"></span></label></p>' +
+                '" class="accordion-content accordionItem is-collapsed"><p><label class="label1"><input type="checkbox" ' + checked + ' class="barabash like" name="like" id="' + item.key + '" onclick="changeTheFav(' + item.key + ')"><span class="like"></span></label></p>' +
                 item.val().text +
                 "</dd>";
         } else if (tag[0][1] == checkboxesChecked[i]) {
@@ -119,12 +119,12 @@ function addItem2(item, tag) {
                     item.val().title +
                     "</a></dt>" +
                     '<dd id="' +
-                    '" class="accordion-content accordionItem is-collapsed"><p><label class="label1"><input type="checkbox" ' + checked + ' class="barabash like" name="like" id="' + item.key + '" onclick="changeTheFav('+ item.key +')"><span class="like"></span></label></p>' +
+                    '" class="accordion-content accordionItem is-collapsed"><p><label class="label1"><input type="checkbox" ' + checked + ' class="barabash like" name="like" id="' + item.key + '" onclick="changeTheFav(' + item.key + ')"><span class="like"></span></label></p>' +
                     item.val().text +
                     "</dd>";
             }
         } else if (tag[0][2] == checkboxesChecked[i]) {
-            if (newItem.indexOf(item.val().text) > -1) {    
+            if (newItem.indexOf(item.val().text) > -1) {
                 newItem += "";
             } else {
                 newItem +=
@@ -132,7 +132,7 @@ function addItem2(item, tag) {
                     item.val().title +
                     "</a></dt>" +
                     '<dd id="' +
-                    '" class="accordion-content accordionItem is-collapsed"><p><label class="label1"><input type="checkbox" ' + checked + ' class="barabash like" name="like" id="' + item.key + '" onclick="changeTheFav('+ item.key +')"><span class="like"></span></label></p>' +
+                    '" class="accordion-content accordionItem is-collapsed"><p><label class="label1"><input type="checkbox" ' + checked + ' class="barabash like" name="like" id="' + item.key + '" onclick="changeTheFav(' + item.key + ')"><span class="like"></span></label></p>' +
                     item.val().text +
                     "</dd>";
             }
@@ -241,26 +241,21 @@ function changeTheFav(key) {
     favorites.once("value").then(snap => {
         favo = snap.val().favorites;
         mass = favo.split(",");
-        if (!mass.includes(key.id)){
+        if (!mass.includes(key.id)) {
             favorites.update({
-                'favorites': favo+','+key.id
+                'favorites': favo + ',' + key.id
             });
         } else if (mass.includes(key.id)) {
             favo = "";
             for (let i = 0; i < mass.length; i++) {
                 if (mass[i] != key.id && mass[i] != "") {
                     if (favo == "") {
-                        favo += mass[i]; 
-                        console.log(favo + "1");
-                    }else{
+                        favo += mass[i];
+                    } else {
                         favo += "," + mass[i];
-                        console.log(favo + "2");
                     }
-                } else{
-                    mass.splice(i, 1);
                 }
             }
-            console.log(favo + "3");
             favorites.update({
                 'favorites': favo
             });
@@ -276,10 +271,10 @@ function isFavorite(key) { //функция на проверку измбран
     favorites.once("value").then(snap => {
         favo = snap.val().favorites;
         mass = favo.split(",");
-        if (mass.includes(key)){
+        if (mass.includes(key)) {
             temp = true;
             let el = document.getElementById(key);
-            if(el) el.setAttribute('checked','checked');
+            if (el) el.setAttribute('checked', 'checked');
         }
         else {
             temp = false;

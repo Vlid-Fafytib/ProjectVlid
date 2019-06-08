@@ -6,10 +6,14 @@ a {
 	text-decoration: none;
 }
 
+body{
+    background-image: url(/includes/image/circles-light.png);
+}
 /* Стили для главного дива */
+
 .page-wrapper{    
     margin-top: 0px;
-    background-color: #fff ;
+    /* background-color: #fff ; */
     width: 100%; 
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	font-size: 20px;
@@ -436,4 +440,19 @@ ul li:hover .dropOut { opacity: 1; margin-top: 8px; }
 
 .barabash:checked + span  	{
 	background-position: -24px 0;
+}
+
+.page{
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 0;
+    width: 50%;
+    min-height: 80vh;
+    /* background-color: red; */
+    font-size: 16pt;
+    padding-right: 10%;
+}
+
+#title_fav{
+    margin-right: 17%;
 }

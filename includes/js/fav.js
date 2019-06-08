@@ -8,10 +8,14 @@ var fav;
 var com_fielder = document.getElementById("com_field"); //див со статьями
 //
 function call1(uid) {
+    var temp = "";
     newItem = "";
     listRef = db.ref("all/users/" + uid);
     listRef.once("value", function (e) {
-        fav = e.val().favorites.split(",");
+        temp = e.val().favorites;
+        if(temp.charAt(0) === ",")
+        temp = temp.slice(1);
+        fav = temp.split(",");
         // console.log(fav);
         outPut(fav);
     });

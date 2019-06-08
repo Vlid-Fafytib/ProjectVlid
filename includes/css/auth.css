@@ -16,6 +16,10 @@
     color: #FFF;
     height: 100%;
   }
+
+body{
+    background-image: url(/includes/image/stardust.png)
+}
   
   .container {
     min-height: 300px;
@@ -42,41 +46,50 @@
     transition: all 0.4s;
     display: flex;
   }
+
   .pages .page {
     min-width: 100%;
     padding: 20px 15px;
     padding-top: 0px;
     background: linear-gradient(to left, #955DFF, #6FAAFF);
   }
+
   .pages .page:nth-of-type(1) .input {
     -webkit-transform: translateX(-100%) scale(0.5);
             transform: translateX(-100%) scale(0.5);
   }
+
   .pages .page:nth-of-type(2) .input {
     -webkit-transform: translateX(100%) scale(0.5);
             transform: translateX(100%) scale(0.5);
   }
+
   .pages .page .input {
     transition: all 1s;
     opacity: 0;
     transition-delay: 0s;
   }
+
   .pages .page.signup {
     background: linear-gradient(to left, #6FAAFF, #955DFF);
   }
+
   .pages .page .title {
     margin-bottom: 10px;
     font-size: 14px;
     position: relative;
     line-height: 14px;
   }
+
   .pages .page .title i {
     vertical-align: text-bottom;
     font-size: 19px;
   }
+
   .pages .page .input {
     margin-top: 20px;
   }
+
   .pages .page input.text {
     background: #F6F7F9;
     border: none;
@@ -88,6 +101,7 @@
     color: rgba(0, 0, 0, 0.5);
     outline: none;
   }
+
   .pages .page input[type=submit] {
     background: rgba(0, 0, 0, 0.5);
     color: #F6F7F9;
@@ -105,6 +119,7 @@
     display: flex;
     background: #FFF;
   }
+
   .tabs .tab {
     flex: 1;
     color: #5D708A;
@@ -112,6 +127,7 @@
     line-height: 50px;
     transition: all 0.2s;
   }
+  
   .tabs .tab .text {
     font-size: 14px;
     -webkit-transform: scale(1);
