@@ -44,6 +44,7 @@ const page1 = {
         this.what.forEach(item => {
             this.post1.innerHTML += `<option value="${item}">${item}</option>`;
             this.form1.innerHTML += `<p class="aligner2"><label><input type="checkbox" value="${item}" name="tags-form1" class="checkbox">${item}</label></p>`;
+            // this.form1.innerHTML += `<div class="control-group"><label for="checkbox" class="control-label">"${item}"</label><div class="controls"><input type="checkbox" name="" class="checkbox" id="checkbox"/></div></div>`;
         });
         this.where.forEach(item => {
             this.post2.innerHTML += `<option value="${item}">${item}</option>`;

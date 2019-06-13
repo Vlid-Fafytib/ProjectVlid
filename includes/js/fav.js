@@ -1,7 +1,6 @@
-
 const db = firebase.database();
 const auth = firebase.auth();
-
+const zeroA = document.getElementById("zeroArticles");
 var listRef = "";
 var newItem = "";
 var fav;
@@ -24,20 +23,21 @@ function call1(uid) {
 function outPut(fav) {
     newItem = "";
     var reff = db.ref("all/articles/");
-
-    fav.forEach(e => {
-        reff.child(e).on("value", function (snap) {
-            newItem += '<dt onclick="switchAccordion()"><a href="#' + snap.key + '" name="' + snap.key + '" class="accordion-title accordionTitle js-accordionTrigger">' +
-                snap.val().title +
-                '</a></dt>' +
-                '<dd id="" class="accordion-content accordionItem is-collapsed"><p><label class="label1"><input type="checkbox" checked class="barabash like" name="like" id="' + snap.key + '" onclick="changeTheFav(' + snap.key + ')"><span class="like"></span></label></p>' +
-                snap.val().text +
-                "</dd>";
-            document.querySelector(".accordion>dl").innerHTML = ""; //очищение блока для статей
-            document.querySelector(".accordion>dl").innerHTML += newItem; //отрисовка статей на странице
-
+    if (fav.length > 0) {
+        fav.forEach(e => {
+            reff.child(e).on("value", function (snap) {
+                newItem += '<dt onclick="switchAccordion()"><a href="#' + snap.key + '" name="' + snap.key + '" class="accordion-title accordionTitle js-accordionTrigger">' +
+                    snap.val().title +
+                    '</a></dt>' +
+                    '<dd id="" class="accordion-content accordionItem is-collapsed"><p><label class="label1"><input type="checkbox" checked class="barabash like" name="like" id="' + snap.key + '" onclick="changeTheFav(' + snap.key + ')"><span class="like"></span></label></p>' +
+                    snap.val().text +
+                    "</dd>";
+                document.querySelector(".accordion>dl").innerHTML = ""; //очищение блока для статей
+                zeroA.innerHTML = "";
+                document.querySelector(".accordion>dl").innerHTML += newItem; //отрисовка статей на странице
+            });
         });
-    });
+    }
 
 }
 

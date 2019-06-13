@@ -5,10 +5,12 @@ const password = document.querySelector('#js-password');
 const passwordConfirm = document.querySelector('#js-password-confirm');
 const passwordToggle = document.querySelector('#js-toggle-password');
 const passwordSuggest = document.querySelector('#js-suggest-password');
+
 const email = document.querySelector("#email")
 const name = document.querySelector("#name");
 let passwordDisplayed = false;
-
+let deletee = document.querySelector(".delete-button");
+let confirm = document.querySelector(".confirm");
 // On form submission, check the passwords match and display a message if the password (would have) been saved.
 document.querySelector('form').addEventListener('submit', function (event) {
     event.preventDefault();
@@ -51,7 +53,6 @@ function succSumb() {
     let currentPassword = password.value;//curr pass
     let newPassword = passwordConfirm.value;//new pass for acc
     let newEmail = email.value;//new email
-    //get current user
     const user = firebase.auth().currentUser;
     //get credentials for reauth 
     const credentials = firebase.auth.EmailAuthProvider.credential(user.email, currentPassword);
@@ -79,3 +80,15 @@ function succSumb() {
         });
 }
 
+// deletee.addEventListener("click", function() {
+//     deletee.classList.toggle("activate");
+// });
+
+// confirm.addEventListener("click", e => {
+//     let user = firebase.auth().currentUser;
+//     user.delete().then(e =>{
+//         document.location.href = "auth.js";
+//     }).catch(e =>{
+//         console.log(e); 
+//     })
+// });

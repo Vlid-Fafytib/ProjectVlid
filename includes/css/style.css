@@ -30,9 +30,8 @@ body{
 .aligner2{
 	margin-top: 0px;
     width: 50%;
-
 	margin: 0 30px 30px 0;
-	margin-left: 25px;
+	margin-left: 50px;
 }
 /* Выравниватель только для кнопки назад*/
 .aligner3{
@@ -202,9 +201,9 @@ button:active::after {
 
 	.container {
 		max-width: 960px;
-		margin: 0 auto;
+		/* margin: 0 auto; */
 		padding: 2em 0 2em 0;
-		width: 80%;
+		width: 100%;
 	  }
 
 	  #side-bar{
@@ -230,8 +229,12 @@ button:active::after {
 
 	.aligner2{
 		text-align: center;
-		margin-left: 25%;
+        margin-left: 25%; 
 	}
+}
+
+h2{
+    width: 100%; 
 }
 /* настройки для экранов с максимальным разрешением 768 */
 @media only screen and (max-width : 768px) {
@@ -278,7 +281,7 @@ button:active::after {
 
 .container {
   max-width: 960px;
-  margin: 0 auto;
+  margin: 0 100px;
   padding: 2em 0 2em 0;
 }
 
@@ -446,16 +449,91 @@ ul li:hover .dropOut { opacity: 1; margin-top: 8px; }
     margin: 0 auto;
     margin-top: 30px;
     padding: 0;
-    width: 50%;
+    width: 100%;
     min-height: 80vh;
     /* background-color: red; */
     font-size: 16pt;
     padding-right: 10%;
+    text-align: center;
 }
 
 #title_fav{
     margin-top: 75px;
-    margin-right: 17%;
     font-size: 29pt; 
     font-family: 'Lato', sans-serif; 
+}
+
+/**
+* end demo
+* -------------------------
+*/
+input[type="checkbox"] {
+  width: 18px;
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  position: relative;
+  border: none;
+  cursor: pointer;
+  margin-left: -25px;
+  vertical-align: -4px;
+  outline-width: 0;
+  border-radius: 50%;
+}
+input[type="checkbox"]:focus {
+  -webkit-animation: press .8s 1;
+          animation: press .8s 1;
+}
+input[type="checkbox"]:before, input[type="checkbox"]:after {
+  content: "";
+}
+input[type="checkbox"]:after {
+  display: block;
+  width: 14px;
+  height: 14px;
+  margin-top: -2px;
+  margin-right: 5px;
+  border: 2px solid #666;
+  transition: 240ms;
+}
+input[type="checkbox"]:disabled:after {
+  border-color: #ddd;
+  background-color: #eee;
+  cursor: not-allowed;
+}
+input[type="checkbox"]:disabled:checked:after {
+  background-color: #eee;
+  border-color: #ddd;
+}
+input[type="checkbox"]:disabled:checked:before {
+  border-color: #999;
+}
+
+input[type="checkbox"]:after {
+  border-radius: 2px;
+  background-color: #fff;
+  z-index: 999;
+}
+input[type="checkbox"]:checked:after {
+  background-color: #38CC70;
+  border-color: #38CC70;
+}
+input[type="checkbox"]:checked:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 6px;
+  display: table;
+  width: 4px;
+  height: 10px;
+  border: 2px solid #fff;
+  border-top-width: 0;
+  border-left-width: 0;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+label{
+    margin-left: 0px; 
 }

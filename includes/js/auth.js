@@ -17,7 +17,7 @@
     const btnLogin = document.getElementById("btnSignIn");
     const btnSignUp = document.getElementById("btnSignUp");
     const btnLogout = document.getElementById("btnLogout");
-
+    const goNext = document.getElementById("btnGonext");
     btnLogin.addEventListener('click', e => {
         //Get email and pass
         const email = signEmail.value;
@@ -25,10 +25,9 @@
         const auth = firebase.auth();
         //Sign in
         auth.signInWithEmailAndPassword(email, pass)
-            .catch(e => console.log(e.message))
             .then(e => {
                 document.location.href = "../html/index.html";
-            });
+            }).catch(e => alert(e.message));
 
     });
 
@@ -53,7 +52,8 @@
                 }
             )
             .catch(e => {
-                console.log(e)
+                alert(e.message);
+                // console.log(e)
             });
     });
 
@@ -61,15 +61,22 @@
         firebase.auth().signOut();
     });
 
+    goNext.addEventListener('click', () =>{
+        document.location.href = "../html/index.html";
+    });
     // Add a realtime listener
     firebase.auth().onAuthStateChanged(user => {
 
         if (user) {
             console.log("sign in");
             btnLogout.classList.remove("hide");
+            btnLogout.value = "Log out from " + user.displayName;
+            goNext.classList.remove("hide");
+            goNext.value = "Enter as " + user.displayName;
         } else {
             console.log('not logged in');
             btnLogout.classList.add("hide");
+            goNext.classList.add("hide");
         }
     });
     //set new user to DB 
