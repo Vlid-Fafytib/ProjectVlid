@@ -10,7 +10,6 @@ body{
     background-image: url(../image/circles-light.png);
 }
 /* Стили для главного дива */
-
 .page-wrapper{    
     margin-top: 0px;
     /* background-color: #fff ; */
@@ -188,6 +187,15 @@ button:active::after {
 	border-right: 2px dotted grey;
 	border-bottom: 2px dotted grey;
 }
+
+@media only screen and (max-width : 2000px) {
+    .container1 {
+		max-width: 960px;
+        padding: 2em 0 2em 0;
+        margin-left: 100px;
+	  }
+
+}
 /* настройки для экранов с максимальным разрешение 1224 пикселя */
 @media only screen and (max-width : 1224px) {
 	.border{
@@ -202,7 +210,7 @@ button:active::after {
 	.container {
 		max-width: 960px;
 		padding: 2em 0 2em 0;
-		width: 100%;
+        width: 100%;
 	  }
 
 	  #side-bar{
@@ -250,6 +258,11 @@ h2{
         margin: 0 auto;
         padding: 2em 0 2em 0;
       }
+      .container1 {
+        width: 100%;
+        margin: 0 auto;
+        padding: 2em 0 2em 0;
+      }
 }
 
 .last{
@@ -282,8 +295,6 @@ h2{
   position: relative;
   background-color: #eee;
 }
-
-
 
 .accordionTitle,
 .accordion__Heading {
@@ -463,10 +474,6 @@ ul li:hover .dropOut { opacity: 1; margin-top: 8px; }
     font-family: 'Lato', sans-serif; 
 }
 
-/**
-* end demo
-* -------------------------
-*/
 input[type="checkbox"] {
   width: 18px;
   -moz-appearance: none;
