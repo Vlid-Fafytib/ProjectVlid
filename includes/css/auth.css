@@ -10,7 +10,7 @@
   }
 
 body{
-    background-image: url(../image/stardust.png)
+    background-image: url(../image/circles-light.png)
 }
   
   .container {
@@ -43,7 +43,7 @@ body{
     min-width: 100%;
     padding: 20px 15px;
     padding-top: 0px;
-    background: linear-gradient(to left, #955DFF, #6FAAFF);
+    background: linear-gradient(to left, #38CC70, #38CC70);
   }
 
   .pages .page:nth-of-type(1) .input {
@@ -63,11 +63,12 @@ body{
   }
 
   .pages .page.signup {
-    background: linear-gradient(to left, #6FAAFF, #955DFF);
+    background: linear-gradient(to left, #38CC70, #38CC70);
   }
 
   .pages .page .title {
     margin-bottom: 10px;
+    color: #FFF;
     font-size: 14px;
     position: relative;
     line-height: 14px;
