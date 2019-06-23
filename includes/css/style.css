@@ -191,7 +191,6 @@ button:active::after {
     .container1 {
 		max-width: 960px;
         padding: 2em 0 2em 0;
-        margin-left: 100px;
 	  }
 
 }
@@ -225,6 +224,10 @@ button:active::after {
 		text-align: center;
 		float: right;
 		overflow: hidden;
+    }
+    
+    .com_field1{
+		width: 80%;
 	}
 
 	.fomer{
@@ -257,11 +260,7 @@ h2{
         margin: 0 auto;
         padding: 2em 0 2em 0;
       }
-      .container1 {
-        width: 100%;
-        margin: 0 auto;
-        padding: 2em 0 2em 0;
-      }
+
 }
 
 .last{
@@ -295,6 +294,11 @@ h2{
   background-color: #eee;
 }
 
+.container1 {
+    max-width: 960px;
+    padding: 2em 0 2em 0;
+    margin: 0 auto;
+  }
 .accordionTitle,
 .accordion__Heading {
   background-color: #38cc70;
@@ -464,7 +468,7 @@ ul li:hover .dropOut { opacity: 1; margin-top: 8px; }
     /* background-color: red; */
     font-size: 16pt;
     padding-right: 10%;
-    text-align: center;
+    /* text-align: center; */
 }
 
 #title_fav{
